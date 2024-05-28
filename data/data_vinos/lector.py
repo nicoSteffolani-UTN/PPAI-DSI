@@ -12,5 +12,3 @@ for pais in paises:
     print(pais)
 
 conexion.close()
-
-sqlite3 datos_prueba.db ".recover" | sqlite3 datos_prueba_reparada.db
