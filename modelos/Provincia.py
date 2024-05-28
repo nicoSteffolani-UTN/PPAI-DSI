@@ -1,5 +1,3 @@
-
-
 class Provincia:
 
     def __init__(self, nombre, pais):
@@ -7,7 +5,7 @@ class Provincia:
         self.pais = pais
 
     def __str__(self):
-        return self.nombre
+        return f'{self.nombre} -- {self.pais}'
     
     def getNombre(self):
         return self.nombre
