@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://images.vexels.com/media/users/3/203173/isolated/preview/92b075f418f79167dd01328b70747fdd-copa-de-trazo-de-vino.png">
+    <title>B O N V I N O</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bg-image {
+            background-image: url('https://i.imgur.com/BqYmlEu.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }       
+        .bg-bordeaux {
+            background-color: #4b1b1b !important; /* Color bordeaux */
+            background-image: url('frontend/vinos.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .navbar-light .navbar-nav .nav-link,
+        .navbar-light .navbar-brand {
+            color: #ffffff !important; /* Color blanco para el texto en la barra de navegación */
+        }
+        .text-bordeaux {
+            font-family: "Times New Roman", serif;
+            color: #4b1b1b !important; /* Color bordeaux para el texto */
+        }
+        .text-white {
+            font-family: "Times New Roman", serif;
+            color: #ffffff !important;
+        }
+        .lead {
+            font-family: "Times New Roman", serif;
+            color: #f8f9fa !important; /* Color claro para subtítulos y texto principal en encabezado */
+        }
+        .bg-bordo-claro {
+            background-color: whitesmoke !important; /* Color bordeaux claro */
+        }
+        .btn-outline-bordo {
+            font-family: "Times New Roman", serif;
+            color: #4b1b1b; /* Color bordó para el texto */
+            border-color: #4b1b1b; /* Color bordó para el borde */
+        }
+        .btn-outline-bordo:hover {
+            background-color: #4b1b1b; /* Color bordó de fondo al pasar el ratón */
+            color: white; /* Color del texto al pasar el ratón */
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!-- Barra de navegacion -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-bordeaux">
+        <a class="navbar-brand" href="#">Mi Sitio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Encabezado -->
+    <header class="bg-bordeaux text-white text-center py-5">
+        <div class="container">
+            <h1>BONVINO</h1>
+            <p class="lead">ENCUENTRA EL VINO CORRECTO</p>
+        </div>
+    </header>
+    <img src="vinos.png" alt="Vinos">
+    <img src="../data/img/vinos2.jpeg" alt="Vinos2">
+    <!-- Contenido principal -->
+    <main class="container my-5">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="text-bordeaux">Generar reporte ranking de vinos</h2>
+                <!-- Modificación: Agregar un enlace al botón -->
+                <a href="ranking.html" class="btn btn-outline-bordo">GENERAR RANKING DE VINOS</a>
+                <p style="font-family: Times New Roman, serif;"> Generar un informe con los 10 mejores vinos rankeados para un periodo definido según ciertas 
+                    características.</p>
+            </div>
+            <div class="col-md-4">
+                <h2 class="text-bordeaux">Barra Lateral</h2>
+                <p style="font-family: Times New Roman, serif;">Esta es una barra lateral donde puedes añadir widgets, enlaces, o cualquier otra información adicional que complementa el contenido principal.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pie de pagina -->
+    <footer class="bg-bordo-claro text-center py-4">
+        <div class="container">
+            <p class="m-0 text-bordeaux">© 2024 BONVINO. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Enlace a Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
