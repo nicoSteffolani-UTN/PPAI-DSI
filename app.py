@@ -1,14 +1,16 @@
 from flask import Flask, render_template
-from data.dataVinos.lectorPaises import leerPaises
-import json
+from data.dataVinos.lectorVinos import leerVinos
 
 app = Flask(__name__, template_folder='frontend/')
 
 @app.route('/')
 def index():
-    return json.dumps(leerPaises())
+    return 'texto prueba'
 
 if __name__ == '__main__':
-    print(leerPaises())
+    listaVinos = leerVinos()
+    for vino in listaVinos:
+        print(vino)
     app.run(port=5000, debug=True)
+
 

@@ -1,7 +1,8 @@
 class RegionVitivinicola: 
     def __init__(self, descripcion, nombre, provincia):
-        self.nombre = descripcion
-        self.pais = nombre
+        self.descripcion = descripcion
+        self.nombre = nombre
+        self.provincia = provincia
 
     def __str__(self):
         return f"{self.descripcion} -- {self.nombre} -- {self.provincia}"
