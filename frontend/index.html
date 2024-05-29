@@ -27,11 +27,13 @@
             color: #4b1b1b !important; /* Color bordeaux para el texto */
         }
         .text-white {
-            font-family: "Times New Roman", serif;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: x-large;
             color: #ffffff !important;
         }
         .lead {
-            font-family: "Times New Roman", serif;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: medium;
             color: #f8f9fa !important; /* Color claro para subtítulos y texto principal en encabezado */
         }
         .bg-bordo-claro {
@@ -46,6 +48,12 @@
             background-color: #4b1b1b; /* Color bordó de fondo al pasar el ratón */
             color: white; /* Color del texto al pasar el ratón */
         }
+        .img-center {
+            display: flex;
+            margin-left: 25%;
+            margin-right: auto;
+            width: 50%;
+        }
 
     </style>
 
@@ -53,8 +61,10 @@
 <body>
 
     <!-- Barra de navegacion -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-bordeaux">
-        <a class="navbar-brand" href="#">Mi Sitio</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-bordeaux navbar">
+        <a class="navbar-brand" href="#">
+            <img src="../data/img/images.png" alt="Logo" width="40" height="40">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -89,8 +99,8 @@
                     características.</p>
             </div>
             <div class="col-md-4">
-                <h2 class="text-bordeaux">Barra Lateral</h2>
-                <p style="font-family: Times New Roman, serif;">Esta es una barra lateral donde puedes añadir widgets, enlaces, o cualquier otra información adicional que complementa el contenido principal.</p>
+                <img src="../data/img/vino-imagen-animada-0042.gif" alt="Imagen de ejemplo" class="img-center">
+                <p style="font-family: Times New Roman, serif;" class="text-centerz">“El mejor vino no es necesariamente el más caro, sino el que se comparte”.</p>
             </div>
         </div>
     </main>

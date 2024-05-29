@@ -56,9 +56,6 @@
         <a class="navbar-brand" href="index.html" style="margin-left: 15px;">
             <img src="../data/img/flecha retroceso.png" alt="Logo" width="25" height="25">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
     </nav>
     <div class="container" style="margin-top: 100px;">
         <h2>Generar Reporte de Ranking</h2>
@@ -87,7 +84,19 @@
                     <option value="En pantalla">En pantalla</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Generar Reporte</button>
+            <button  onclick="cambiarVisualizacion()" class="btn btn-primary btn-block">Generar Reporte</button>
+            <script> 
+            function cambiarVisualizacion() {
+                var tipoVisualizacion = document.getElementById("tipo-visualizacion").value;
+                if (tipoVisualizacion == "Excel") {
+                    alert("Reporte generado en formato Excel");
+                } else if (tipoVisualizacion == "PDF") {
+                    alert("Reporte generado en formato PDF");
+                } else {
+                    alert("Reporte generado en pantalla");
+                }
+            }
+            </script>
         </form>
     </div>
 </body>
