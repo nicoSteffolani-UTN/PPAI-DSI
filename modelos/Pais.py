@@ -11,3 +11,9 @@ class Pais:
     
     def setNombre(self, nombre):
         self.nombre = nombre
+
+    def toDict(self):
+        return {
+            "nombre": self.nombre
+        }
+
