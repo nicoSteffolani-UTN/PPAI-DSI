@@ -3,16 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://images.vexels.com/media/users/3/203173/isolated/preview/92b075f418f79167dd01328b70747fdd-copa-de-trazo-de-vino.png">
+
     <title>Reporte</title>
 
     <!-- Enlace a Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .contact-box {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        .contact-box p {
+            margin: 10px 0;
+            text-align: center;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('../data/img/VINOTINTO.png') no-repeat center center fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            color: #4b1b1b;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        footer {
+            background-color: rgba(245, 245, 245, 0.637);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+        .text-bordeaux {
+            font-family: "Times New Roman", serif;
+            color: #4b1b1b !important; /* Color bordeaux para el texto */
+        }
+        button[type="submit"]:hover {
+            background-color: #721c24;
+        }
+                .btn-outline-bordo {
+            font-family: "Times New Roman", serif;
+            color: white; /* Color bordó para el texto */
+            border-color: #4b1b1b; /* Color bordó para el borde */
+            background-color: #4b1b1b;
+        }
+        .btn-outline-bordo:hover {
+            background-color: #4b1b1b; /* Color bordó de fondo al pasar el ratón */
+            color: white; /* Color del texto al pasar el ratón */
+        }
 
+    </style>
 </head>
 <body>
-    <div class="container" style="margin-top: 100px;">
+    <div class="container contact-box" style="margin-top: 100px;">
         <table class="table table-bordered border-primary table-striped">
             <thead>
+                <h2>TOP 1O VINOS</h2>
                 <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Calificación de Sommelier</th>
@@ -27,6 +88,7 @@
             <tbody id="lista-carnets">
             </tbody>
         </table>
+        <a href="index.html" class="btn btn-outline-bordo" type="submit">Volver al Inicio</a><br><br> 
     </div>
     
     <script>
@@ -41,5 +103,12 @@
             }
         }
     </script>
+
+     <!-- Pie de pagina -->
+     <footer class="bg-bordo-claro">
+        <div class="container">
+            <p class="m-0 text-bordeaux">© 2024 BONVINO. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 </body>
 </html>

@@ -19,6 +19,18 @@
             background-image: url("../data/img/VINOTINTO.png");
             background-repeat: no-repeat;
             background-size: cover;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        footer {
+            background-color: rgba(245, 245, 245, 0.637);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
         }
 
         .container {
@@ -57,6 +69,24 @@
         button[type="submit"]:hover {
             background-color: #721c24;
         }
+                .btn-outline-bordo {
+            font-family: "Times New Roman", serif;
+            color: white; /* Color bordó para el texto */
+            border-color: #4b1b1b; /* Color bordó para el borde */
+            background-color: #4b1b1b;
+        }
+        .btn-outline-bordo:hover {
+            background-color: #4b1b1b; /* Color bordó de fondo al pasar el ratón */
+            color: white; /* Color del texto al pasar el ratón */
+        }
+        .bg-bordo-claro {
+            background-color: whitesmoke !important; /* Color bordeaux claro */
+        }
+        .text-bordeaux {
+            font-family: "Times New Roman", serif;
+            color: #4b1b1b !important; /* Color bordeaux para el texto */
+        }
+        
     </style>
 </head>
 
@@ -93,9 +123,20 @@
                     <option value="En pantalla">En pantalla</option>
                 </select>
             </div>
+<<<<<<< HEAD
             <a href="reporte.html" class="btn btn-primary btn-block" type="submit">GENERAR RANKING DE VINOS</a><br><br> 
+=======
+            <a href="reporte.html" class="btn btn-outline-bordo" type="submit">GENERAR RANKING DE VINOS</a><br><br> 
+            
+>>>>>>> f9dabdeae55f3f732b6e674a7d479f3f52fc50b2
         </form>
     </div>
+         <!-- Pie de pagina -->
+         <footer>
+            <div>
+                <p class="m-0 text-bordeaux">© 2024 BONVINO. Todos los derechos reservados.</p>
+            </div>
+        </footer>
 </body>
 
 </html>
