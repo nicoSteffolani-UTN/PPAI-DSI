@@ -37,7 +37,6 @@ for vino in vinos:
         Varietal(vino[14], vino[15])
         )
     listaVinos.append(obj_vino)
-    print(obj_vino)
 
 conexion.close()
 

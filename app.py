@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from data.dataVinos.lectorVinos import leerVinos
+from data.dataVinos.lectorReseña import leerReseñas
 
 app = Flask(__name__, template_folder='frontend/')
 
@@ -8,7 +8,7 @@ def index():
     return 'texto prueba'
 
 if __name__ == '__main__':
-    listaVinos = leerVinos()
+    listaVinos = leerReseñas()
     for vino in listaVinos:
         print(vino)
     app.run(port=5000, debug=True)
