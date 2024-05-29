@@ -45,3 +45,13 @@ class Reseña:
 
     def setVino(self, vino):
         self.vino = vino
+
+    def toDict(self):
+        return {
+            "id": self.id,
+            "comentario": self.comentario,
+            "puntaje": self.puntaje,
+            "fechaReseña": self.fechaReseña,
+            "esPremium": self.esPremium,
+            "vino": self.vino.toDict()
+        }

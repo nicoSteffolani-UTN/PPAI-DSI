@@ -24,3 +24,10 @@ class RegionVitivinicola:
     
     def setProvincia(self, provincia):
         self.provincia = provincia
+
+    def toDict(self):
+        return {
+            "descripcion": self.descripcion,
+            "nombre": self.nombre,
+            "provincia": self.provincia.toDict()
+        }

@@ -1,16 +1,15 @@
 from flask import Flask, render_template
-from data.dataVinos.lectorReseña import leerReseñas
+from generarRanking import generarRanking
+from flask_cors import CORS
 
 app = Flask(__name__, template_folder='frontend/')
+CORS(app)
 
 @app.route('/')
 def index():
-    return 'texto prueba'
+    return generarRanking('2020-01-01', '2021-12-31', 'sommelier', 'tabla')
 
 if __name__ == '__main__':
-    listaVinos = leerReseñas()
-    for vino in listaVinos:
-        print(vino)
     app.run(port=5000, debug=True)
 
 

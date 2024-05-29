@@ -38,3 +38,12 @@ class Bodega:
 
     def setRegion(self, region):
         self.region = region
+
+    def toDict(self):
+        return {
+            "nombre": self.nombre,
+            "descripcion": self.descripcion,
+            "historia": self.historia,
+            "coordenadas": self.coordenadas,
+            "region": self.region.toDict()
+        }

@@ -17,3 +17,9 @@ class Varietal:
     
     def setPorcenComp(self, porcent_comp):
         self.porcent_comp = porcent_comp
+
+    def toDict(self):
+        return {
+            "descripcion": self.descripcion,
+            "porcent_comp": self.porcent_comp
+        }

@@ -46,7 +46,11 @@ def generarRanking(fechaDesde, fechaHasta, tipoRes, tipoVis):
         f_sum_total= n_sum_total= 0
     listaRanking.sort(key=lambda x: x[1], reverse=True)
     
+    listaRankingJson = []
     for ranking in listaRanking[:10]:
-        print(ranking[0].nombre, ' tiene ',ranking[1], ' de promedio', tipoRes,' y ', ranking[2], ' de promedio general.')
-
-generarRanking('2020-01-01', '2021-12-31', 'sommelier', 'tabla')
+        listaRankingJson.append({
+            'Vino': ranking[0].toDict(),
+            'promedio': ranking[1],
+            'promedioGeneral': ranking[2]
+        })
+    return listaRankingJson
