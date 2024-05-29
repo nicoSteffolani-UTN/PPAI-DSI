@@ -36,7 +36,7 @@ for reseña in reseñas:
     obj_reseña = Reseña(
         Vino( reseña[0], reseña[1], reseña[2], reseña[3], reseña[4], reseña[5], 
             Bodega(reseña[6], reseña[7], reseña[8], reseña[9], 
-               RegionVitivinicola(reseña[10], reseña[11], 
+                RegionVitivinicola(reseña[10], reseña[11], 
                     Provincia(reseña[12], 
                         Pais(reseña[13])
                     )
