@@ -11,9 +11,9 @@ class Vino:
 
 
     def __str__(self):
-        return f"{self.id} -- {self.añada} -- {self.fechaActualizacion} -
-        - {self.imagenEtiqueta} -- {self.nombre} -- {self.precio} -
-        - {self.bodega} -- {self.varietal}"
+        return (f"{self.id} -- {self.añada} -- {self.fechaActualizacion} -\
+- {self.imagenEtiqueta} -- {self.nombre} -- {self.precio} -\
+- {self.bodega} -- {self.varietal}")
 
     # Getters
     def getId(self):
