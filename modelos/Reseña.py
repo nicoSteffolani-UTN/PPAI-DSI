@@ -1,5 +1,5 @@
 class Reseña:
-    def __init__(self, id, comentario, puntaje, fechaReseña, esPremium, vino):
+    def __init__(self, vino, id, comentario, puntaje, fechaReseña, esPremium):
         self.id = id
         self.comentario = comentario
         self.puntaje = puntaje
