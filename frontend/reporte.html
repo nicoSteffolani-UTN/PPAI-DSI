@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte</title>
+
+    <!-- Enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="container" style="margin-top: 100px;">
+        <table class="table table-bordered border-primary table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Calificación de Sommelier</th>
+                    <th scope="col">Calificación General</th>
+                    <th scope="col">Precio Sugerido</th>
+                    <th scope="col">Bodega</th>
+                    <th scope="col">Varietal</th>
+                    <th scope="col">Región</th>
+                    <th scope="col">País</th>
+                </tr>
+            </thead>
+            <tbody id="lista-carnets">
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+        function cambiarVisualizacion() {
+            var tipoVisualizacion = document.getElementById("tipo-visualizacion").value;
+            if (tipoVisualizacion == "Excel") {
+                alert("Reporte generado en formato Excel");
+            } else if (tipoVisualizacion == "PDF") {
+                alert("Reporte generado en formato PDF");
+            } else {
+                alert("Reporte generado en pantalla");
+            }
+        }
+    </script>
+</body>
+</html>
