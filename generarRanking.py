@@ -1,56 +1,75 @@
 from data.dataVinos.lectorReseña import leerReseñas
 from data.dataVinos.lectorVinos import leerVinos
-
-def generarRanking(fechaDesde, fechaHasta, tipoRes, tipoVis):
-
-    listaReseñas = leerReseñas()
-    listaFiltrada = []
-    listaNormal = []
-    for reseña in listaReseñas:
-        if reseña.fechaReseña >= fechaDesde and reseña.fechaReseña <= fechaHasta:
-            listaNormal.append(reseña)
-            if tipoRes == 'sommelier':
-                if reseña.esPremium:
-                    listaFiltrada.append(reseña)
-
-            elif tipoRes == 'normal':
-                listaFiltrada.append(reseña)
-
-            elif tipoRes == 'amigos':
-                if not(reseña.esPremium):
-                    listaFiltrada.append(reseña)
-
-    f_coincidencias = promedioFiltrado = f_sum_total= 0
-    n_coincidencias = promedioNormal = n_sum_total = 0
-    listaRanking = []
-    listaVinos = leerVinos()
-    for vino in listaVinos:
-        for reseña in listaFiltrada:
-            if vino.id == reseña.vino.id:
-                f_coincidencias += 1
-                f_sum_total += reseña.puntaje
-
-        for reseña in listaNormal:
-            if vino.id == reseña.vino.id:
-                n_coincidencias += 1
-                n_sum_total += reseña.puntaje
-
-
-        if f_coincidencias != 0:
-            promedioFiltrado = f_sum_total / f_coincidencias
-            promedioNormal = n_sum_total / n_coincidencias
-            
-            lista = [vino, round(promedioFiltrado, 2), round(promedioNormal, 2)]
-            listaRanking.append(lista)
-        f_coincidencias = n_coincidencias= 0
-        f_sum_total= n_sum_total= 0
-    listaRanking.sort(key=lambda x: x[1], reverse=True)
+from modelos.Reseña import Reseña
+class GestorRanking():
     
-    listaRankingJson = []
-    for ranking in listaRanking[:10]:
-        listaRankingJson.append({
-            'Vino': ranking[0].toDict(),
-            'promedio': ranking[1],
-            'promedioGeneral': ranking[2]
-        })
-    return listaRankingJson
+    def __init__(self, fechaDesde, fechaHasta, tipoReseña, tipoVisualizacion):
+        self.fechaDesde = fechaDesde
+        self.fechaHasta = fechaHasta
+        self.tipoRes = tipoReseña
+        self.tipoVis = tipoVisualizacion
+        
+    
+    def buscarReseñasEnPeriodo(self, idVino):
+        listaReseñas = leerReseñas()
+        listaFiltrada = []
+
+        for reseña in listaReseñas:
+            if (reseña.validarFechaPeriodo(self.fechaDesde, self.fechaHasta, reseña) and reseña.sosDeVino(idVino)):
+                if self.tipoRes == 'sommelier'and reseña.esPremium:
+                        return True
+
+                elif self.tipoRes == 'normal':
+                    return True
+
+                elif self.tipoRes == 'amigos':
+                    if not(reseña.esPremium):
+                        return True
+                    
+        return False
+
+
+    def buscarVinosReseñasEnPeriodo(self):
+        listaVinos = leerVinos()
+        listaFiltrada = []
+
+        for vino in listaVinos:
+
+            if GestorRanking.buscarReseñasEnPeriodo(self, vino.id):
+                listaFiltrada.append(vino)
+        
+        return listaFiltrada
+
+    def calcularPuntajePromedio(cant, sum):
+        prom = sum/cant
+        return prom
+
+    def calcularPuntajeDeSommelierEnPeriodo(self, lista):
+        listaRanking = []
+        listaReseñas = leerReseñas()
+        for vino in lista:
+            puntaje = 0
+            cantidad = 0
+            for reseña in listaReseñas:
+                if reseña.sosDeVino(vino.id) and reseña.esPremium and reseña.validarFechaPeriodo(self.fechaDesde, self.fechaHasta, reseña):
+                    puntaje += reseña.puntaje
+                    cantidad += 1
+
+                if reseña.validarFechaPeriodo(self.fechaDesde, self.fechaHasta, reseña):
+                    puntajeGen += reseña.puntaje
+                    cantGen += 1
+
+                
+            
+            prom = GestorRanking.calcularPuntajePromedio(cantidad, puntaje)
+            promGen = GestorRanking.calcularPuntajePromedio(cantGen, puntajeGen)
+
+            lista = [vino.toDict(), prom, promGen]
+            listaRanking.append(lista)
+        return listaRanking
+    
+    def ordenarVinos(listaRanking):
+        listaOrdenada = listaRanking.sort(key=lambda x: x[1], reverse=True)
+        return listaOrdenada
+    
+

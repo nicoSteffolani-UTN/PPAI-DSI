@@ -55,3 +55,10 @@ class Reseña:
             "esPremium": self.esPremium,
             "vino": self.vino.toDict()
         }
+    
+    def validarFechaPeriodo(fechaDesde, fechaHasta, self):
+        return self.fechaReseña >= fechaDesde and self.fechaReseña <= fechaHasta
+    
+    def sosDeVino(self, idVino):
+        if self.vino.id == idVino:
+            return True
