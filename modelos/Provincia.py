@@ -19,8 +19,8 @@ class Provincia:
     def setPais(self, pais):
         self.pais = pais
 
-    def toDict(self):
+    def getDatosProvincia(self):
         return {
             "nombre": self.nombre,
-            "pais": self.pais.toDict()
+            "pais": self.pais.getDatosPais()
         }

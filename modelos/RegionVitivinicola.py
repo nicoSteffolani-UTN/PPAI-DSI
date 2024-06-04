@@ -25,9 +25,9 @@ class RegionVitivinicola:
     def setProvincia(self, provincia):
         self.provincia = provincia
 
-    def toDict(self):
+    def getDatosRegionVitivinicola(self):
         return {
             "descripcion": self.descripcion,
             "nombre": self.nombre,
-            "provincia": self.provincia.toDict()
+            "provincia": self.provincia.getDatosProvincia()
         }
