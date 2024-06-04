@@ -12,7 +12,7 @@ class Pais:
     def setNombre(self, nombre):
         self.nombre = nombre
 
-    def toDict(self):
+    def getDatosPais(self):
         return {
             "nombre": self.nombre
         }

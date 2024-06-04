@@ -46,17 +46,17 @@ class Reseña:
     def setVino(self, vino):
         self.vino = vino
 
-    def toDict(self):
+    def getDatosReseña(self):
         return {
-            "id": self.id,
-            "comentario": self.comentario,
-            "puntaje": self.puntaje,
-            "fechaReseña": self.fechaReseña,
-            "esPremium": self.esPremium,
-            "vino": self.vino.toDict()
+            "id": self.getId(),
+            "comentario": self.getComentario(),
+            "puntaje": self.getPuntaje(),
+            "fechaReseña": self.getFechaReseña(),
+            "esPremium": self.getEsPremium(),
+            "vino": self.vino.getDatosVino()
         }
     
-    def validarFechaPeriodo(fechaDesde, fechaHasta, self):
+    def validarFechaPeriodo(self, fechaDesde, fechaHasta):
         return self.fechaReseña >= fechaDesde and self.fechaReseña <= fechaHasta
     
     def sosDeVino(self, idVino):

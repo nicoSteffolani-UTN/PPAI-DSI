@@ -86,7 +86,18 @@
             font-family: "Times New Roman", serif;
             color: #4b1b1b !important; /* Color bordeaux para el texto */
         }
-        
+        .contact-box {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        .contact-box p {
+            margin: 10px 0;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -124,9 +135,30 @@
                     <option value="En pantalla">En pantalla</option>
                 </select>
             </div>
-            <a href="reporte.html" class="btn btn-outline-bordo" onclick="cargarDatos()" type="submit">GENERAR RANKING DE VINOS</a><br><br> 
+            <a class="btn btn-outline-bordo" onclick="cargarDatos()" type="submit">GENERAR RANKING DE VINOS</a><br><br>
             
         </form>
+        
+    </div>
+    <div class="container contact-box">
+        <table class="table table-bordered border-primary table-striped">
+            <thead>
+                <h2>TOP 1O VINOS</h2>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Calificación de Sommelier</th>
+                    <th scope="col">Calificación General</th>
+                    <th scope="col">Precio Sugerido</th>
+                    <th scope="col">Bodega</th>
+                    <th scope="col">Varietal</th>
+                    <th scope="col">Región</th>
+                    <th scope="col">País</th>
+                </tr>
+            </thead>
+            <tbody id="lista-ranking">
+            </tbody>
+        </table>
+        <a href="index.html" class="btn btn-outline-bordo" type="submit">Volver al Inicio</a><br><br> 
     </div>
         <!-- Pie de pagina -->
         <footer>

@@ -65,15 +65,15 @@ class Vino:
     def setVarietal(self, varietal):
         self.varietal = varietal
 
-    def toDict(self):
+    def getDatosVino(self):
         return {
-            "id": self.id,
-            "añada": self.añada,
-            "fechaActualizacion": self.fechaActualizacion,
-            "imagenEtiqueta": self.imagenEtiqueta,
-            "nombre": self.nombre,
-            "precio": self.precio,
-            "bodega": self.bodega.toDict(),
-            "varietal": self.varietal.toDict()
+            "id": self.getId(),
+            "añada": self.getAñada(),
+            "fechaActualizacion": self.getFechaActualizacion(),
+            "imagenEtiqueta": self.getImagenEtiqueta(),
+            "nombre": self.getNombre(),
+            "precio": self.getPrecio(),
+            "bodega": self.bodega.getDatosBodega(),
+            "varietal": self.varietal.getDatosVarietal()
         }
 
