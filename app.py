@@ -10,9 +10,9 @@ def index():
 
     gr = GestorRanking('2020-01-01', '2021-12-31', 'sommelier', 'tabla')
     lista = gr.buscarVinosReseñasEnPeriodo()
-   
+
     listaRanking = gr.calcularPuntajeDeSommelierEnPeriodo(lista)
-   
+
     listaOrdenada = gr.ordenarVinos(listaRanking)
 
 
