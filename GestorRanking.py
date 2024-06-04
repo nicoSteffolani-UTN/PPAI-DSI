@@ -2,7 +2,7 @@ from data.dataVinos.lectorReseña import leerReseñas
 from data.dataVinos.lectorVinos import leerVinos
 
 
-class GestorRanking():
+class GestorAdmReporteRanking():
     
     def __init__(self, fechaDesde, fechaHasta, tipoReseña, tipoVisualizacion):
         self.fechaDesde = fechaDesde
@@ -39,7 +39,7 @@ class GestorRanking():
 
         for vino in listaVinos:
 
-            if GestorRanking.buscarReseñasEnPeriodo(self, vino.id):
+            if GestorAdmReporteRanking.buscarReseñasEnPeriodo(self, vino.id):
                 listaFiltrada.append(vino)
         
         return listaFiltrada
@@ -66,12 +66,11 @@ class GestorRanking():
                 if reseña.sosDeVino(vino.id) and reseña.validarFechaPeriodo(self.fechaDesde, self.fechaHasta):
                     puntajeGen += reseña.puntaje
                     cantGen += 1
-                    print(puntajeGen, cantGen)
 
                 
             
-            prom = GestorRanking.calcularPuntajePromedio(cantidad, puntaje)
-            promGen = GestorRanking.calcularPuntajePromedio(cantGen, puntajeGen)
+            prom = GestorAdmReporteRanking.calcularPuntajePromedio(cantidad, puntaje)
+            promGen = GestorAdmReporteRanking.calcularPuntajePromedio(cantGen, puntajeGen)
 
             lista = [vino.getDatosVino(), prom, promGen]
             listaRanking.append(lista)
