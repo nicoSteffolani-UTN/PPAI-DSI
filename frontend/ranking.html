@@ -16,7 +16,7 @@
         }
 
         body {
-            background-image: url("../data/img/VINOTINTO.png");
+            background-image: url("img/VINOTINTO.png");
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
@@ -104,7 +104,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-bordeaux"></nav>
     <a class="navbar-brand" href="index.html" style="margin-left: 15px;">
-        <img src="../data/img/flecha retroceso.png" alt="Logo" width="25" height="25">
+        <img src="img/flecha retroceso.png" alt="Logo" width="25" height="25">
     </a>
     </nav>
     <div class="container" style="margin-top: 100px;">
@@ -135,7 +135,7 @@
                     <option value="En pantalla">En pantalla</option>
                 </select>
             </div>
-            <a class="btn btn-outline-bordo" onclick="cargarDatos()" type="submit">GENERAR RANKING DE VINOS</a><br><br>
+            <a class="btn btn-outline-bordo" id="btn-confirmar" type="submit">GENERAR RANKING DE VINOS</a><br><br>
             
         </form>
         
@@ -166,7 +166,7 @@
                 <p class="m-0 text-bordeaux">© 2024 BONVINO. Todos los derechos reservados.</p>
             </div>
         </footer>
-        <script src="js/script.js"></script>
+        <script type="module" src="js/script.js"></script>
 </body>
 
 </html>

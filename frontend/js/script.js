@@ -1,54 +1,17 @@
-// cargar los datos del json en la tabla
+import { PantallaAdmReporteRanking } from './PantallaAdmReporteRanking.js';
+
+const tabla = document.getElementById('lista-ranking');
+const fechaDesde = document.getElementById('fecha-desde');
+const fechaHasta = document.getElementById('fecha-hasta');
+const btnConfirmar = document.getElementById('btn-confirmar');
+const comboTipoResena = document.getElementById('tipo-reseña').value;
+const comboVisualizacion = document.getElementById('tipo-visualizacion').value;
 
 
-function validarFecha() {
-    var fechaDesde = document.getElementById('fecha-desde');
-    var fechaHasta = document.getElementById('fecha-hasta');
+const pantalla = new PantallaAdmReporteRanking(fechaDesde,fechaHasta, btnConfirmar, comboTipoResena, comboVisualizacion, tabla);
 
-    if (!fechaDesde.value || !fechaHasta.value) {
-        alert("Por favor ingrese ambas fechas");
-        return false;
-    }
-
-    if (new Date(fechaDesde.value) >= new Date(fechaHasta.value)) {
-        alert("La fecha desde debe ser menor que la fecha hasta");
-        return false;
-    }
-    return true;
-}
-
-
-const cargarDatos = async () => {
-    try {
-        console.log('cargando datos');
-        if (validarFecha()) {
-
-            const data = await fetch('http://127.0.0.1:5000/')
-            const ranking = await data.json();
-
-
-            const tabla = document.getElementById('lista-ranking');
-            tabla.innerHTML = '';
-
-            ranking.forEach((vino) => {
-
-                const tr = `
-                    <tr>
-                        <td>${vino[0].nombre}</td>
-                        <td>${vino[1]}</td>
-                        <td>${vino[2]}</td>
-                        <td>$${vino[0].precio}</td>
-                        <td>${vino[0].bodega.nombre}</td>
-                        <td>${vino[0].varietal.descripcion}</td>
-                        <td>${vino[0].bodega.region.nombre}</td>
-                        <td>${vino[0].bodega.region.provincia.pais.nombre}</td>
-                    </tr>`;
-
-                tabla.innerHTML += tr;
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-}
+btnConfirmar.addEventListener('click', async () => {
+    pantalla.cargarDatos();
+    console.log('cargando datos');
+    console.log(fechaDesde.value, fechaHasta.value);
+});
