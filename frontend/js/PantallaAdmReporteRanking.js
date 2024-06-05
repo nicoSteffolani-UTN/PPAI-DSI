@@ -74,7 +74,7 @@ class PantallaAdmReporteRanking {
                 const fechaHasta = this.tomarFechaHasta();
                 const tipoReseña = this.tomarTipoReseña();
                 const tipoVisualizacion = this.tomarTipoVisualizacion();
-                const url = `http://0.0.0.0:5000/?fechaDesde=${fechaDesde}&fechaHasta=${fechaHasta}&tipoReseña=${tipoReseña}&tipoVisualizacion=${tipoVisualizacion}`;
+                const url = `http://127.0.0.1:5000/?fechaDesde=${fechaDesde}&fechaHasta=${fechaHasta}&tipoReseña=${tipoReseña}&tipoVisualizacion=${tipoVisualizacion}`;
                 const data = await fetch(url);
                 const ranking = await data.json();
 
