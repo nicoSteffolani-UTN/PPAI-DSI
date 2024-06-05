@@ -3,11 +3,10 @@ from flask_cors import CORS
 from GestorRanking import GestorAdmReporteRanking
 
 app = Flask(__name__, template_folder='frontend/')
-CORS(app, origins=['http://0.0.0.0:8000'])
+CORS(app, origins=['http://127.0.0.1:8000'])
 
 @app.route('/')
 def index():
-
     req = request.args
     listaOrdenada = GestorAdmReporteRanking.opcionGenerarRankingDeVinos(req)
     return listaOrdenada
