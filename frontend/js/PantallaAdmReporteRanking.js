@@ -1,63 +1,90 @@
 // cargar los datos del json en la tabla
 class PantallaAdmReporteRanking {
 
-    constructor(datePickerDesde, datePickerHasta, btnConfirmar, comboTipoResena, comboVisualizacion, listaRanking) {
+
+    constructor(datePickerDesde, datePickerHasta, comboTipoReseña, comboVisualizacion, listaRanking) {
         this.datePickerDesde = datePickerDesde;
         this.datePickerHasta = datePickerHasta;
-        this.btnConfirmar = btnConfirmar;
-        this.comboTipoResena = comboTipoResena;
+        this.comboTipoReseña = comboTipoReseña;
         this.comboVisualizacion = comboVisualizacion;
         this.listaRanking = listaRanking;
     }
 
+    opcionGenerarRankingDeVinos() {
+        window.open('../ranking.html', '_blank');
+    }
+
+    tomarFechaDesde() {
+        return this.datePickerDesde.value;
+    }
+
+    tomarFechaHasta() {
+        return this.datePickerHasta.value;
+    }
+
+    tomarTipoReseña() {
+        return this.comboTipoReseña.value;
+    }
+
+    tomarTipoVisualizacion() {
+        return this.comboVisualizacion.value;
+    }
+
+
     validarFecha() {
         
-        if (!this.datePickerDesde.value || !this.datePickerHasta.value) {
+        if (!this.tomarFechaDesde() || !this.tomarFechaHasta()) {
             alert("Por favor ingrese ambas fechas");
             return false;
         }
 
-        if (new Date(this.datePickerDesde.value) >= new Date(this.datePickerHasta.value)) {
+        if (new Date(this.tomarFechaDesde()) >= new Date(this.tomarFechaHasta())) {
             alert("La fecha desde debe ser menor que la fecha hasta");
             return false;
         }
         return true;
     }
 
-    async cargarDatos(req, res) {
+
+    informarGeneracion(ranking) {
+        const tabla = this.listaRanking;
+        tabla.innerHTML = '';
+
+        ranking.forEach((vino) => {
+            const tr = `
+                <tr>
+                    <td>${vino[0].nombre}</td>
+                    <td>${vino[1]}</td>
+                    <td>${vino[2]}</td>
+                    <td>$${vino[0].precio}</td>
+                    <td>${vino[0].bodega.nombre}</td>
+                    <td>${vino[0].varietal.descripcion}</td>
+                    <td>${vino[0].bodega.region.nombre}</td>
+                    <td>${vino[0].bodega.region.provincia.pais.nombre}</td>
+                </tr>`;
+            tabla.innerHTML += tr;
+        });
+    }
+
+
+    async tomarConfirmacionReporte() {
         try {
-            console.log('cargando datos');
             if (this.validarFecha()) {
-                const fechaDesde = this.datePickerDesde.value;
-                const fechaHasta = this.datePickerHasta.value;
-                const url = `http://0.0.0.0:5000/?fechaDesde=${fechaDesde}&fechaHasta=${fechaHasta}`;
+                const fechaDesde = this.tomarFechaDesde();
+                const fechaHasta = this.tomarFechaHasta();
+                const tipoReseña = this.tomarTipoReseña();
+                const tipoVisualizacion = this.tomarTipoVisualizacion();
+                const url = `http://0.0.0.0:5000/?fechaDesde=${fechaDesde}&fechaHasta=${fechaHasta}&tipoReseña=${tipoReseña}&tipoVisualizacion=${tipoVisualizacion}`;
                 const data = await fetch(url);
                 const ranking = await data.json();
+
+                this.informarGeneracion(ranking);
                 
-
-                const tabla = this.listaRanking;
-                tabla.innerHTML = '';
-
-                ranking.forEach((vino) => {
-                    const tr = `
-                        <tr>
-                            <td>${vino[0].nombre}</td>
-                            <td>${vino[1]}</td>
-                            <td>${vino[2]}</td>
-                            <td>$${vino[0].precio}</td>
-                            <td>${vino[0].bodega.nombre}</td>
-                            <td>${vino[0].varietal.descripcion}</td>
-                            <td>${vino[0].bodega.region.nombre}</td>
-                            <td>${vino[0].bodega.region.provincia.pais.nombre}</td>
-                        </tr>`;
-                    tabla.innerHTML += tr;
-                });
             }
         } catch (error) {
             console.log(error);
         }
     }
-    
 }
 
 // Exportar la clase PantallaAdmReporteRanking

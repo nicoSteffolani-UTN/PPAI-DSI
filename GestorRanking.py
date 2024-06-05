@@ -11,11 +11,21 @@ class GestorAdmReporteRanking():
         self.tipoVis = tipoVisualizacion
         
         
+    def tomarFechasReseñas(req):
+        fechaDesde = req.get('fechaDesde')
+        fechaHasta = req.get('fechaHasta')
+        return fechaDesde, fechaHasta
     
+    def tomarTipoReseña(req):
+        tipoReseña = req.get('tipoReseña')
+        return tipoReseña
+    
+    def tomarTipoVisualizacion(req):
+        tipoVisualizacion = req.get('tipoVisualizacion')
+        return tipoVisualizacion
+
     def buscarReseñasEnPeriodo(self, idVino):
         listaReseñas = leerReseñas()
-        
-        listaFiltrada = []
 
         for reseña in listaReseñas:
             if (reseña.validarFechaPeriodo(self.fechaDesde, self.fechaHasta) and reseña.sosDeVino(idVino)):
@@ -39,7 +49,9 @@ class GestorAdmReporteRanking():
 
         for vino in listaVinos:
 
-            if GestorAdmReporteRanking.buscarReseñasEnPeriodo(self, vino.id):
+            idVino = vino.getId()
+
+            if GestorAdmReporteRanking.buscarReseñasEnPeriodo(self, idVino):
                 listaFiltrada.append(vino)
         
         return listaFiltrada
@@ -58,13 +70,15 @@ class GestorAdmReporteRanking():
             puntajeGen = 0
             cantGen = 0
 
+            idVino = vino.getId()
+
             for reseña in listaReseñas:
-                if reseña.sosDeVino(vino.id) and reseña.esPremium and reseña.validarFechaPeriodo(self.fechaDesde, self.fechaHasta):                   
-                    puntaje += reseña.puntaje
+                if reseña.sosDeVino(idVino) and reseña.esPremium and reseña.validarFechaPeriodo(self.fechaDesde, self.fechaHasta):                   
+                    puntaje += reseña.getPuntaje()
                     cantidad += 1
 
-                if reseña.sosDeVino(vino.id) and reseña.validarFechaPeriodo(self.fechaDesde, self.fechaHasta):
-                    puntajeGen += reseña.puntaje
+                if reseña.sosDeVino(idVino) and reseña.validarFechaPeriodo(self.fechaDesde, self.fechaHasta):
+                    puntajeGen += reseña.getPuntaje()
                     cantGen += 1
 
                 
@@ -81,4 +95,19 @@ class GestorAdmReporteRanking():
         listaOrdenada = sorted(listaRanking, key=lambda x: x[1], reverse=True)
         return listaOrdenada[:10]
     
+    def opcionGenerarRankingDeVinos(req):
+        fechaDesde, fechaHasta = GestorAdmReporteRanking.tomarFechasReseñas(req)
+        tipoReseña = GestorAdmReporteRanking.tomarTipoReseña(req)
+        tipoVisualizacion = GestorAdmReporteRanking.tomarTipoVisualizacion(req)
+        listaOrdenada = GestorAdmReporteRanking.tomarConfirmacionReporte(fechaDesde, fechaHasta, tipoReseña, tipoVisualizacion)
+        return listaOrdenada
+        
+    def tomarConfirmacionReporte(fechaDesde, fechaHasta, tipoReseña, tipoVisualizacion):
+        gr = GestorAdmReporteRanking(fechaDesde, fechaHasta, tipoReseña, tipoVisualizacion)
+        lista = gr.buscarVinosReseñasEnPeriodo()
+    
+        listaRanking = gr.calcularPuntajeDeSommelierEnPeriodo(lista)
+    
+        listaOrdenada = gr.ordenarVinos(listaRanking)
+        return listaOrdenada
 

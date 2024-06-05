@@ -8,16 +8,8 @@ CORS(app, origins=['http://0.0.0.0:8000'])
 @app.route('/')
 def index():
 
-    fechaDesde = request.args.get('fechaDesde')
-    fechaHasta = request.args.get('fechaHasta')
-
-    gr = GestorAdmReporteRanking(fechaDesde, fechaHasta, 'sommelier', 'tabla')
-    lista = gr.buscarVinosReseñasEnPeriodo()
-
-    listaRanking = gr.calcularPuntajeDeSommelierEnPeriodo(lista)
-
-    listaOrdenada = gr.ordenarVinos(listaRanking)
-
+    req = request.args
+    listaOrdenada = GestorAdmReporteRanking.opcionGenerarRankingDeVinos(req)
     return listaOrdenada
 
 if __name__ == '__main__':
