@@ -10,6 +10,31 @@ class PantallaAdmReporteRanking {
         this.listaRanking = listaRanking;
     }
 
+    pedirFechasReseña() {
+        const fechaDesde = document.getElementById('fecha-desde');
+        const fechaHasta = document.getElementById('fecha-hasta');
+        this.datePickerDesde = fechaDesde;
+        this.datePickerHasta = fechaHasta;
+    }
+
+    pedirTipoResena() {
+        const tipoReseña = document.getElementById('tipo-reseña');
+        this.comboTipoReseña = tipoReseña;
+    }
+
+    pedirTipoVisualizacion() {
+        const tabla = document.getElementById('lista-ranking');
+        const comboVisualizacion = document.getElementById('tipo-visualizacion');
+        this.listaRanking = tabla;
+        this.comboVisualizacion = comboVisualizacion;
+    }
+
+    pedirConfirmacionReporte() {
+        const btnConf = document.getElementById('btn-confirmar');
+        const btnFin = document.getElementById('btn-fin');
+        return [btnConf, btnFin];
+    }
+
     opcionGenerarRankingDeVinos() {
         window.open('../ranking.html', '_self');
     }
