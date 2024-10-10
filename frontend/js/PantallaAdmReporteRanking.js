@@ -11,7 +11,7 @@ class PantallaAdmReporteRanking {
     }
 
     opcionGenerarRankingDeVinos() {
-        window.open('../ranking.html', '_blank');
+        window.open('../ranking.html', '_self');
     }
 
     tomarFechaDesde() {
@@ -84,6 +84,10 @@ class PantallaAdmReporteRanking {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    finCU() {
+        window.open('../index.html', '_self');
     }
 }
 
