@@ -1,26 +1,31 @@
 class Provincia:
 
-    def __init__(self, nombre, pais):
-        self.nombre = nombre
-        self.pais = pais
+    def __init__(self, nombre, regiones):
+        self.__nombre = nombre
+        self.__regiones = regiones
 
     def __str__(self):
-        return f'{self.nombre} -- {self.pais}'
+        return self.__nombre, self.__regiones
     
     def getNombre(self):
-        return self.nombre
+        return self.__nombre
     
     def setNombre(self, nombre):    
-        self.nombre = nombre
+        self.__nombre = nombre
 
-    def getPais(self):
-        return self.pais
+    def getRegiones(self):
+        return self.__regiones
     
-    def setPais(self, pais):
-        self.pais = pais
+    def setRegiones(self, regiones):
+        self.__regiones = regiones
+
+    def agregarRegion(self, region):
+        self.__regiones.append(region)
+
+    def contarRegiones(self):
+        return len(self.__regiones)
 
     def getDatosProvincia(self):
         return {
-            "nombre": self.nombre,
-            "pais": self.pais.getDatosPais()
+            "nombre": self.nombre
         }

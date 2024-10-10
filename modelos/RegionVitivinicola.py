@@ -1,33 +1,39 @@
 class RegionVitivinicola: 
-    def __init__(self, descripcion, nombre, provincia):
-        self.descripcion = descripcion
-        self.nombre = nombre
-        self.provincia = provincia
+    def __init__(self, descripcion, nombre, bodegas):
+        self.__descripcion = descripcion
+        self.__nombre = nombre
+        self.__bodegas = bodegas
 
     def __str__(self):
-        return f"{self.descripcion} -- {self.nombre} -- {self.provincia}"
+        return f"{self.__descripcion} -- {self.__nombre} -- {self.__bodegas}"
     
     def getDescripcion(self):
-        return self.descripcion
+        return self.__descripcion
     
     def setDescripcion(self, descripcion):
-        self.descripcion = descripcion
+        self.__descripcion = descripcion
 
     def getNombre(self):
-        return self.nombre
+        return self.__nombre
     
     def setNombre(self, nombre):
-        self.nombre = nombre
+        self.__nombre = nombre
 
-    def getProvincia(self):
-        return self.provincia
+    def getBodegas(self):
+        return self.__bodegas
     
-    def setProvincia(self, provincia):
-        self.provincia = provincia
+    def setBodegas(self, bodegas):
+        self.__bodegas = bodegas
+
+    def agregarBodega(self, bodega):
+        self.__bodegas.append(bodega)
+
+    def contarBodegas(self):
+        return len(self.__bodegas)
 
     def getDatosRegionVitivinicola(self):
         return {
-            "descripcion": self.descripcion,
-            "nombre": self.nombre,
-            "provincia": self.provincia.getDatosProvincia()
+            "descripcion": self.__descripcion,
+            "nombre": self.__nombre,
+            "bodegas": self.__bodegas
         }

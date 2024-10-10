@@ -1,10 +1,9 @@
 class Bodega:
-    def __init__(self, nombre, descripcion, historia, coordenadas, region):
+    def __init__(self, nombre, descripcion, historia, coordenadas, vinos):
         self.nombre = nombre
         self.descripcion = descripcion
         self.historia = historia
         self.coordenadas = coordenadas
-        self.region = region
 
     def __str__(self):
         return f'{self.nombre} -- {self.descripcion} -- {self.historia} -- {self.coordenadas} -- {self.region}'

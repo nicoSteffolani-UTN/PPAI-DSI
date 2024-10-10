@@ -1,11 +1,5 @@
 import sqlite3
-from modelos.Vino import Vino
-from modelos.Bodega import Bodega
-from modelos.Varietal import Varietal
-from modelos.RegionVitivinicola import RegionVitivinicola
-from modelos.Provincia import Provincia
-from modelos.Pais import Pais
-from modelos.Reseña import Reseña
+
 
 
 conexion = sqlite3.connect("datos_prueba.db")
@@ -29,9 +23,10 @@ cursor.execute(
 )
 
 reseñas = cursor.fetchall()
-
+print(reseñas);
 listaReseñas = []
 
+"""
 for reseña in reseñas:
     obj_reseña = Reseña(
         Vino( reseña[0], reseña[1], reseña[2], reseña[3], reseña[4], reseña[5], 
@@ -45,7 +40,7 @@ for reseña in reseñas:
             Varietal(reseña[14], reseña[15])
         ), reseña[16], reseña[17], reseña[18], reseña[19], reseña[20])
     listaReseñas.append(obj_reseña)
-
+"""
 conexion.close()
 
 
