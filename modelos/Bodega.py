@@ -1,48 +1,49 @@
 class Bodega:
-    def __init__(self, nombre, descripcion, historia, coordenadas, vinos):
-        self.nombre = nombre
-        self.descripcion = descripcion
-        self.historia = historia
-        self.coordenadas = coordenadas
+    def __init__(self, nombre, descripcion, historia, coordenadas, region):
+        self.__nombre = nombre
+        self.__descripcion = descripcion
+        self.__historia = historia
+        self.__coordenadas = coordenadas
+        self.__region = region
 
     def __str__(self):
-        return f'{self.nombre} -- {self.descripcion} -- {self.historia} -- {self.coordenadas} -- {self.region}'
+        return f'{self.__nombre} -- {self.__descripcion} -- {self.__historia} -- {self.__coordenadas} -- {self.__region}'
 
     def getNombre(self):
-        return self.nombre
+        return self.__nombre
 
     def setNombre(self, nombre):
-        self.nombre = nombre
+        self.__nombre = nombre
 
     def getDescripcion(self):
-        return self.descripcion
+        return self.__descripcion
 
     def setDescripcion(self, descripcion):
-        self.descripcion = descripcion
+        self.__descripcion = descripcion
 
     def getHistoria(self):
-        return self.historia
+        return self.__historia
 
     def setHistoria(self, historia):
-        self.historia = historia
+        self.__historia = historia
 
     def getCoordenadas(self):
-        return self.coordenadas
+        return self.__coordenadas
 
     def setCoordenadas(self, coordenadas):
-        self.coordenadas = coordenadas
+        self.__coordenadas = coordenadas
 
     def getRegion(self):
-        return self.region
+        return self.__region
 
     def setRegion(self, region):
-        self.region = region
+        self.__region = region
 
     def getDatosBodega(self):
         return {
-            "nombre": self.nombre,
-            "descripcion": self.descripcion,
-            "historia": self.historia,
-            "coordenadas": self.coordenadas,
-            "region": self.region.getDatosRegionVitivinicola()
+            "nombre": self.__nombre,
+            "descripcion": self.__descripcion,
+            "historia": self.__historia,
+            "coordenadas": self.__coordenadas,
+            "region": self.__region.getDatosRegionVitivinicola()
         }
