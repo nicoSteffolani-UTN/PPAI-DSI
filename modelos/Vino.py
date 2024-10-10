@@ -1,69 +1,69 @@
 class Vino:
     def __init__(self, id, añada, fechaActualizacion, imagenEtiqueta, nombre, precio, bodega, varietal):
-        self.id = id
-        self.añada = añada
-        self.fechaActualizacion = fechaActualizacion
-        self.imagenEtiqueta = imagenEtiqueta
-        self.nombre = nombre
-        self.precio = precio
-        self.bodega = bodega
-        self.varietal = varietal
+        self.__id = id
+        self.__añada = añada
+        self.__fechaActualizacion = fechaActualizacion
+        self.__imagenEtiqueta = imagenEtiqueta
+        self.__nombre = nombre
+        self.__precio = precio
+        self.__bodega = bodega
+        self.__varietal = varietal
 
 
     def __str__(self):
-        return (f"{self.id} -- {self.añada} -- {self.fechaActualizacion} -\
-- {self.imagenEtiqueta} -- {self.nombre} -- {self.precio} -\
-- {self.bodega} -- {self.varietal}")
+        return (f"{self.__id} -- {self.__añada} -- {self.__fechaActualizacion} -\
+- {self.__imagenEtiqueta} -- {self.__nombre} -- {self.__precio} -\
+- {self.__bodega} -- {self.__varietal}")
 
     # Getters
     def getId(self):
-        return self.id
+        return self.__id
 
     def getAñada(self):
-        return self.añada
+        return self.__añada
 
     def getFechaActualizacion(self):
-        return self.fechaActualizacion
+        return self.__fechaActualizacion
 
     def getImagenEtiqueta(self):
-        return self.imagenEtiqueta
+        return self.__imagenEtiqueta
 
     def getNombre(self):
-        return self.nombre
+        return self.__nombre
 
     def getPrecio(self):
-        return self.precio
+        return self.__precio
 
     def getBodega(self):
-        return self.bodega
+        return self.__bodega
 
     def getVarietal(self):
-        return self.varietal
+        return self.__varietal
 
     # Setters
     def setId(self, id):
-        self.id = id
+        self.__id = id
 
     def setAñada(self, añada):
-        self.añada = añada
+        self.__añada = añada
 
     def setFechaActualizacion(self, fechaActualizacion):
-        self.fechaActualizacion = fechaActualizacion
+        self.__fechaActualizacion = fechaActualizacion
 
     def setImagenEtiqueta(self, imagenEtiqueta):
-        self.imagenEtiqueta = imagenEtiqueta
+        self.__imagenEtiqueta = imagenEtiqueta
 
     def setNombre(self, nombre):
-        self.nombre = nombre
+        self.__nombre = nombre
 
     def setPrecio(self, precio):
-        self.precio = precio
+        self.__precio = precio
 
     def setBodega(self, bodega):
-        self.bodega = bodega
+        self.__bodega = bodega
 
     def setVarietal(self, varietal):
-        self.varietal = varietal
+        self.__varietal = varietal
 
     def getDatosVino(self):
         return {
@@ -73,7 +73,7 @@ class Vino:
             "imagenEtiqueta": self.getImagenEtiqueta(),
             "nombre": self.getNombre(),
             "precio": self.getPrecio(),
-            "bodega": self.bodega.getDatosBodega(),
-            "varietal": self.varietal.getDatosVarietal()
+            "bodega": self.__bodega.getDatosBodega(),
+            "varietal": self.__varietal.getDatosVarietal()
         }
 
