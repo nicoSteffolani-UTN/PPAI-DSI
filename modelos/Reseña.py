@@ -1,13 +1,17 @@
 class Reseña:
-    def __init__(self, vino, id, comentario, puntaje, fechaReseña, esPremium):
+    def __init__(self, id, comentario, puntaje, fechaReseña, esPremium, vino):
         self.__id = id
         self.__comentario = comentario
         self.__puntaje = puntaje
         self.__fechaReseña = fechaReseña
         self.__esPremium = esPremium
+        self.__vino = vino
 
     def __str__(self):
-        return f'{self.__id} -- {self.__comentario} -- {self.__puntaje} -- {self.__fechaReseña} -- {self.__esPremium} -- {self.__vino}'
+        if self.__esPremium:
+            return f'{self.__id} -- {self.__comentario} -- {self.__puntaje} -- {self.__fechaReseña} -- Es Premium -- {self.__vino}'
+        else:
+            return f'{self.__id} -- {self.__comentario} -- {self.__puntaje} -- {self.__fechaReseña} -- No es Premium -- {self.__vino}'
     
     def getId(self):
         return self.__id

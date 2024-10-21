@@ -1,5 +1,5 @@
-from data.dataVinos.lectorReseña import leerReseñas
-from data.dataVinos.lectorVinos import leerVinos
+from data.lectorReseña import leerReseñas
+from data.lectorVinos import leerVinos
 
 
 class GestorAdmReporteRanking():

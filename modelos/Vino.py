@@ -1,17 +1,16 @@
 class Vino:
-    def __init__(self, id, añada, fechaActualizacion, imagenEtiqueta, nombre, precio, resenias, varietal):
-        self.__id = id
+    def __init__(self, añada, fechaActualizacion, imagenEtiqueta, nombre, precio, varietal, bodega):
         self.__añada = añada
         self.__fechaActualizacion = fechaActualizacion
         self.__imagenEtiqueta = imagenEtiqueta
         self.__nombre = nombre
         self.__precio = precio
-        self.__resenias = resenias
         self.__varietal = varietal
+        self.__bodega = bodega
 
 
     def __str__(self):
-        return (f"{self.__id} -- {self.__añada} -- {self.__fechaActualizacion} -\
+        return (f"{self.__añada} -- {self.__fechaActualizacion} -\
 - {self.__imagenEtiqueta} -- {self.__nombre} -- {self.__precio} -\
 - {self.__bodega} -- {self.__varietal}")
 
@@ -39,7 +38,10 @@ class Vino:
 
     def getVarietal(self):
         return self.__varietal
-
+    
+    def getBodega(self):
+        return self.__bodega
+    
     # Setters
     def setId(self, id):
         self.__id = id
@@ -65,9 +67,11 @@ class Vino:
     def setVarietal(self, varietal):
         self.__varietal = varietal
 
+    def setBodega(self, bodega):
+        self.__bodega = bodega
+
     def getDatosVino(self):
         return {
-            "id": self.getId(),
             "añada": self.getAñada(),
             "fechaActualizacion": self.getFechaActualizacion(),
             "imagenEtiqueta": self.getImagenEtiqueta(),
