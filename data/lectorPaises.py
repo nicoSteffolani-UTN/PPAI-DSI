@@ -21,14 +21,17 @@ listaPaises = []
 
 for pais in paises:
     idPais = pais[0]
+    nomProvincias = []
 
     cursor.execute(
-        'SELECT * FROM PROVINCIAS WHERE PAIS = ?', (int(idPais),)
+        'SELECT NOMBRE FROM PROVINCIAS WHERE PAIS = ?', (int(idPais),)
     )
     provincias = cursor.fetchall()
-    print(provincias)
+    for provincia in provincias:
+        nomProvincias.append(provincia[0])
+    print(nomProvincias)
 
-    pais = Pais(pais[1], provincias)
+    pais = Pais(pais[1], nomProvincias)
     listaPaises.append(pais)
 
 

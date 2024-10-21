@@ -26,6 +26,7 @@ for provincia in provincias:
         'SELECT * FROM REGIONES WHERE PROVINCIA = ?', (int(idProvincia),)
     )
     regiones = cursor.fetchall()
+    print(regiones)
 
     provincia = Provincia(provincia[1], regiones)
     listaProvincias.append(provincia)

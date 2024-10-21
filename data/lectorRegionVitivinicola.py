@@ -20,13 +20,16 @@ listaRegiones = []
 
 for region in regiones:
     idRegion = region[0]
+    nomBodegas = []
 
     cursor.execute(
-        'SELECT * FROM BODEGAS WHERE REGION = ?', (int(idRegion),)
+        'SELECT NOMBRE FROM BODEGAS WHERE REGION = ?', (int(idRegion),)
     )
     bodegas = cursor.fetchall()
+    for bodega in bodegas:
+        nomBodegas.append(bodega[0])
 
-    region = RegionVitivinicola(region[1], region[2], bodegas)
+    region = RegionVitivinicola(region[1], region[2], nomBodegas)
     listaRegiones.append(region)
 
 
