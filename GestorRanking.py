@@ -24,7 +24,7 @@ class GestorAdmReporteRanking():
         tipoVisualizacion = req.get('tipoVisualizacion')
         return tipoVisualizacion
 
-    def buscarReseñasEnPeriodo(self, idVino):
+    def buscarReseñasEnPeriodo(self, idVino): #TODO: Volar este metodo a la mierda
         listaReseñas = leerReseñas()
 
         for reseña in listaReseñas:
@@ -43,7 +43,7 @@ class GestorAdmReporteRanking():
         return False
 
 
-    def buscarVinosReseñasEnPeriodo(self):
+    def buscarVinosReseñasEnPeriodo(self): #TODO: CORREGIRLO
         listaVinos = leerVinos()
         listaFiltrada = []
 
@@ -56,11 +56,11 @@ class GestorAdmReporteRanking():
         
         return listaFiltrada
 
-    def calcularPuntajePromedio(cant, sum):
+    def calcularPuntajePromedio(cant, sum): #TODO: este metodo va en vino
         prom = sum/cant
         return round(prom, 2)
 
-    def calcularPuntajeDeSommelierEnPeriodo(self, lista):
+    def calcularPuntajeDeSommelierEnPeriodo(self, lista): #TODO: CORREGIRLO
         listaRanking = []
         listaReseñas = leerReseñas()
 
@@ -90,19 +90,19 @@ class GestorAdmReporteRanking():
             listaRanking.append(lista)
         return listaRanking
     
-    def ordenarVinos(self, listaRanking):
+    def ordenarVinos(self, listaRanking): #TODO: ojo que puede estar bien, OJO B)
         
         listaOrdenada = sorted(listaRanking, key=lambda x: x[1], reverse=True)
         return listaOrdenada[:10]
     
-    def opcionGenerarRankingDeVinos(req):
+    def opcionGenerarRankingDeVinos(req): #TODO: CORREGIRLO, puede estar bien igual, o no
         fechaDesde, fechaHasta = GestorAdmReporteRanking.tomarFechasReseñas(req)
         tipoReseña = GestorAdmReporteRanking.tomarTipoReseña(req)
         tipoVisualizacion = GestorAdmReporteRanking.tomarTipoVisualizacion(req)
         listaOrdenada = GestorAdmReporteRanking.tomarConfirmacionReporte(fechaDesde, fechaHasta, tipoReseña, tipoVisualizacion)
         return listaOrdenada
         
-    def tomarConfirmacionReporte(fechaDesde, fechaHasta, tipoReseña, tipoVisualizacion):
+    def tomarConfirmacionReporte(fechaDesde, fechaHasta, tipoReseña, tipoVisualizacion): #TODO: AFUEEERAAA, igual revisar primero
         gr = GestorAdmReporteRanking(fechaDesde, fechaHasta, tipoReseña, tipoVisualizacion)
         lista = gr.buscarVinosReseñasEnPeriodo()
     

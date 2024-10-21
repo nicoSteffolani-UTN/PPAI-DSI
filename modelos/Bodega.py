@@ -39,7 +39,11 @@ class Bodega:
     def setVino(self, vino):
         self.__vinos = vino
 
-    def getDatosBodega(self):
+    def obtenerRegionYPais(self):
+        pass
+    
+
+    def getDatosBodega(self): #TODO: AFUEEEERAAAAA
         return {
             "nombre": self.__nombre,
             "descripcion": self.__descripcion,

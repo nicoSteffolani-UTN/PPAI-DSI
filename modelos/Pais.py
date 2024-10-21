@@ -23,10 +23,10 @@ class Pais:
     def agregarPais(self, pais):
         self.__provincias.append(pais)
 
-    def contarprovincias(self):
+    def contarProvincias(self): #TODO: AFUEEEERAAAAA
         return len(self.__provincias)
 
-    def getDatosPais(self):
+    def getDatosPais(self): #TODO: AFUEEEERAAAAA
         return {
             "nombre": self.__nombre,
             "provincias": self.__provincias

@@ -36,7 +36,7 @@ class PantallaAdmReporteRanking {
     }
 
     opcionGenerarRankingDeVinos() {
-        window.open('../ranking.html', '_self');
+        window.open('../ranking.html', '_self'); // Esto es el metodo habilitarPantalla()
     }
 
     tomarFechaDesde() {

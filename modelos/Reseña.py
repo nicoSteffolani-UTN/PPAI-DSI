@@ -49,7 +49,7 @@ class Reseña:
     def setVino(self, vino):
         self.__vino = vino
 
-    def getDatosReseña(self):
+    def getDatosReseña(self): #TODO: AFUEEEERAAAAA
         return {
             "id": self.getId(),
             "comentario": self.getComentario(),
@@ -59,9 +59,14 @@ class Reseña:
             "vino": self.__vino.getDatosVino()
         }
     
-    def validarFechaPeriodo(self, fechaDesde, fechaHasta):
+    def sosDePeriodo(self, fechaDesde, fechaHasta): #TODO: revisar el metodo
         return self.__fechaReseña >= fechaDesde and self.__fechaReseña <= fechaHasta
     
+    def sosDeSommelier(self):
+        pass
+
+
     def sosDeVino(self, idVino):
         if self.__vino.id == idVino:
             return True
+    

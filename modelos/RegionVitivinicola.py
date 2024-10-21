@@ -32,8 +32,11 @@ class RegionVitivinicola:
 
     def contarBodegas(self):
         return len(self.__bodegas)
+    
+    def obtenerPais():
+        pass
 
-    def getDatosRegionVitivinicola(self):
+    def getDatosRegionVitivinicola(self): #TODO: AFUEEEERAAAAA
         return {
             "nombre": self.__nombre,
             "descripcion": self.__descripcion,

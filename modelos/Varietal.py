@@ -18,7 +18,7 @@ class Varietal:
     def setPorcenComp(self, porcent_comp):
         self.__porcent_comp = porcent_comp
 
-    def getDatosVarietal(self):
+    def getDatosVarietal(self): #TODO: AFUEEEERAAAAA
         return {
             "descripcion": self.__descripcion,
             "porcent_comp": self.__porcent_comp

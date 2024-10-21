@@ -15,8 +15,6 @@ class Vino:
 - {self.__bodega} -- {self.__varietal}")
 
     # Getters
-    def getId(self):
-        return self.__id
 
     def getAñada(self):
         return self.__añada
@@ -43,8 +41,6 @@ class Vino:
         return self.__bodega
     
     # Setters
-    def setId(self, id):
-        self.__id = id
 
     def setAñada(self, añada):
         self.__añada = añada
@@ -70,7 +66,23 @@ class Vino:
     def setBodega(self, bodega):
         self.__bodega = bodega
 
-    def getDatosVino(self):
+    def tenesResenasDeTipoEnPeriodo(self, tipo, fechaInicio, fechaFin):
+        pass
+
+    def buscarInfoBodega(self):
+        pass
+
+    def buscarVarietal(self):
+        pass
+
+    def calcularPuntajeSommelierEnPeriodo(self, fechaInicio, fechaFin):
+        pass
+
+    def calcularPuntajePromedio(self):
+        pass
+    
+
+    def getDatosVino(self): #TODO: AFUEERAAAA
         return {
             "añada": self.getAñada(),
             "fechaActualizacion": self.getFechaActualizacion(),

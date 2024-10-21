@@ -26,9 +26,9 @@ class Provincia:
     def contarRegiones(self):
         return len(self.__regiones)
     
-    def obtenerPais(self):
-        for pais in lista_paises:
-            if self in pais.getProvincias():
+    def obtenerPais(self, listaPaises):
+        for pais in listaPaises:
+            if self.__nombre in pais.getProvincias():
                 nombrePais = pais.getNombre()
                 return nombrePais
         return 'La provincia no pertenece a ningun pais'
