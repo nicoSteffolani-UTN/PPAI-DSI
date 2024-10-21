@@ -5,7 +5,6 @@ class Reseña:
         self.__puntaje = puntaje
         self.__fechaReseña = fechaReseña
         self.__esPremium = esPremium
-        self.__vino = vino
 
     def __str__(self):
         return f'{self.__id} -- {self.__comentario} -- {self.__puntaje} -- {self.__fechaReseña} -- {self.__esPremium} -- {self.__vino}'

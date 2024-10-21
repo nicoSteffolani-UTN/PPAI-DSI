@@ -1,12 +1,12 @@
 class Vino:
-    def __init__(self, id, añada, fechaActualizacion, imagenEtiqueta, nombre, precio, bodega, varietal):
+    def __init__(self, id, añada, fechaActualizacion, imagenEtiqueta, nombre, precio, resenias, varietal):
         self.__id = id
         self.__añada = añada
         self.__fechaActualizacion = fechaActualizacion
         self.__imagenEtiqueta = imagenEtiqueta
         self.__nombre = nombre
         self.__precio = precio
-        self.__bodega = bodega
+        self.__resenias = resenias
         self.__varietal = varietal
 
 
@@ -35,7 +35,7 @@ class Vino:
         return self.__precio
 
     def getBodega(self):
-        return self.__bodega
+        return self.__resenias
 
     def getVarietal(self):
         return self.__varietal
@@ -59,8 +59,8 @@ class Vino:
     def setPrecio(self, precio):
         self.__precio = precio
 
-    def setBodega(self, bodega):
-        self.__bodega = bodega
+    def setBodega(self, resenias):
+        self.__resenias = resenias
 
     def setVarietal(self, varietal):
         self.__varietal = varietal
@@ -73,7 +73,6 @@ class Vino:
             "imagenEtiqueta": self.getImagenEtiqueta(),
             "nombre": self.getNombre(),
             "precio": self.getPrecio(),
-            "bodega": self.__bodega.getDatosBodega(),
             "varietal": self.__varietal.getDatosVarietal()
         }
 
