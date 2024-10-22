@@ -15,7 +15,6 @@ cursor.execute(
 )
 
 reseñas = cursor.fetchall()
-print(reseñas);
 listaReseñas = []
 
 for reseña in reseñas:

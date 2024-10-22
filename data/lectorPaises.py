@@ -29,7 +29,6 @@ for pais in paises:
     provincias = cursor.fetchall()
     for provincia in provincias:
         nomProvincias.append(provincia[0])
-    print(nomProvincias)
 
     pais = Pais(pais[1], nomProvincias)
     listaPaises.append(pais)

@@ -31,7 +31,6 @@ for vino in vinos:
     )
     variatales = cursor.fetchall()
     vino = Vino(vino[1], vino[2], vino[3], vino[4], vino[5], variatales, bodega)
-    print(vino)
     listaVinos.append(vino)
 conexion.close()
 

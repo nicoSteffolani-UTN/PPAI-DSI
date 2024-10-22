@@ -28,14 +28,10 @@ for bodega in bodegas:
         'SELECT * FROM VINOS WHERE BODEGA = ?', (int(idBodega),)
     )
     vinos = cursor.fetchall()
-    print(bodegas)
-    print(vinos)
 
     bodega = Bodega(bodega[1],bodega[2],bodega[3],bodega[4], vinos)
     listaBodegas.append(bodega)
-for bodega in listaBodegas:
-    print("\n")
-    print(bodega)
+
 
 
 conexion.close()
