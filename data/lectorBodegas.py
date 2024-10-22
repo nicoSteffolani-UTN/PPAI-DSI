@@ -4,7 +4,7 @@ import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from modelos.Bodega import Bodega
+from backend.modelos.Bodega import Bodega
 
 
 
@@ -28,15 +28,9 @@ for bodega in bodegas:
         'SELECT * FROM VINOS WHERE BODEGA = ?', (int(idBodega),)
     )
     vinos = cursor.fetchall()
-    print(bodegas)
-    print(vinos)
 
     bodega = Bodega(bodega[1],bodega[2],bodega[3],bodega[4], vinos)
     listaBodegas.append(bodega)
-for bodega in listaBodegas:
-    print("\n")
-    print(bodega)
-
 
 conexion.close()
 

@@ -3,7 +3,7 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from modelos.Pais import Pais
+from backend.modelos.Pais import Pais
 
 
 db_path = os.path.join(os.path.dirname(__file__), 'datos_prueba.db')
@@ -29,7 +29,6 @@ for pais in paises:
     provincias = cursor.fetchall()
     for provincia in provincias:
         nomProvincias.append(provincia[0])
-    print(nomProvincias)
 
     pais = Pais(pais[1], nomProvincias)
     listaPaises.append(pais)

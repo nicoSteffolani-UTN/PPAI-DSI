@@ -3,7 +3,7 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from modelos.Vino import Vino
+from backend.modelos.Vino import Vino
 
 db_path = os.path.join(os.path.dirname(__file__), 'datos_prueba.db')
 conexion = sqlite3.connect(db_path)
@@ -31,7 +31,6 @@ for vino in vinos:
     )
     variatales = cursor.fetchall()
     vino = Vino(vino[1], vino[2], vino[3], vino[4], vino[5], variatales, bodega)
-    print(vino)
     listaVinos.append(vino)
 conexion.close()
 
