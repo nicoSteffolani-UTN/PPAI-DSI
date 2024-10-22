@@ -3,7 +3,7 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from modelos.Pais import Pais
+from backend.modelos.Pais import Pais
 
 
 db_path = os.path.join(os.path.dirname(__file__), 'datos_prueba.db')

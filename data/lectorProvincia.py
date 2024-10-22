@@ -3,7 +3,7 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
-from modelos.Provincia import Provincia
+from backend.modelos.Provincia import Provincia
 
 
 db_path = os.path.join(os.path.dirname(__file__), 'datos_prueba.db')
@@ -26,7 +26,6 @@ for provincia in provincias:
         'SELECT * FROM REGIONES WHERE PROVINCIA = ?', (int(idProvincia),)
     )
     regiones = cursor.fetchall()
-
 
     provincia = Provincia(provincia[1], regiones)
     listaProvincias.append(provincia)

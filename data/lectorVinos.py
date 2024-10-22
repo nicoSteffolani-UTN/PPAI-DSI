@@ -3,7 +3,7 @@ import os
 import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from modelos.Vino import Vino
+from backend.modelos.Vino import Vino
 
 db_path = os.path.join(os.path.dirname(__file__), 'datos_prueba.db')
 conexion = sqlite3.connect(db_path)
