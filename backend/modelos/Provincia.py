@@ -5,7 +5,7 @@ class Provincia:
         self.__regiones = regiones
 
     def __str__(self):
-        return self.__nombre, self.__regiones
+        return f'{self.__nombre} -- {self.__regiones}'
     
     def getNombre(self):
         return self.__nombre

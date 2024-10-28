@@ -2,8 +2,15 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from data.lectorReseña import leerReseñas
-from data.lectorVinos import leerVinos
+from data.lectorReseña import LectorReseñas
+from data.lectorVarietal import LectorVarietal
+from data.lectorBodegas import LectorBodegas
+from data.lectorVinos import LectorVinos
+from data.lectorPaises import LectorPaises
+from data.lectorRegionVitivinicola import LectorRegionVitivinicola
+from data.lectorReseña import LectorReseñas
+from data.lectorProvincia import LectorProvincias
+
 
 class GestorAdmReporteRanking():
     
@@ -114,3 +121,45 @@ class GestorAdmReporteRanking():
         listaOrdenada = gr.ordenarVinos(listaRanking)
         return listaOrdenada
 
+    def iniciarBaseDeDatos():
+        lectorReseñas = LectorReseñas()
+        listaReseñas = lectorReseñas.leerReseñas()
+
+        lectorVarietal = LectorVarietal()
+        listaVarietales = lectorVarietal.leerReseñas()
+        
+        lectorRegiones = LectorRegionVitivinicola()
+        listaRegiones = lectorRegiones.leerRegiones()
+
+        lectorProvinicas = LectorProvincias()
+        listaProvincias = lectorProvinicas.leerProvincias(listaRegiones)
+
+        lectorPaises = LectorPaises()
+        listaPaises = lectorPaises.leerPaises(listaProvincias)
+        '''
+        for pais in listaPaises:
+            print(pais.getNombre(), '[')
+            for prov in pais.getProvincias():
+                print(f'\t{prov.getNombre()} [')
+                for region in prov.getRegiones():
+                    print(f'\t\t{region.getNombre()}')
+                print('\t]')
+            print(']')
+        '''
+
+        lectorBodegas = LectorBodegas()
+        listaBodegas = lectorBodegas.leerBodegas(listaRegiones)
+
+        lectorVinos = LectorVinos()
+        listaVinos = lectorVinos.leerVinos(listaBodegas, listaVarietales, listaReseñas)
+        '''for vino in listaVinos:
+            print(f'Añada: {vino.getAñada()}, Fecha de Actualización: {vino.getFechaActualizacion()}, '
+                  f'Imagen de Etiqueta: {vino.getImagenEtiqueta()}, Nombre: {vino.getNombre()}, '
+                  f'Precio: {vino.getPrecio()}, Varietal: {vino.getVarietal()}, Bodega: {vino.getBodega()}')
+            print('Reseñas:')
+            for resenia in vino.getResenias():
+                print(f'\t {resenia}')'''
+        
+
+if __name__ == '__main__':
+    GestorAdmReporteRanking.iniciarBaseDeDatos()

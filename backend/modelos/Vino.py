@@ -1,5 +1,5 @@
 class Vino:
-    def __init__(self, añada, fechaActualizacion, imagenEtiqueta, nombre, precio, varietal, bodega):
+    def __init__(self, añada, fechaActualizacion, imagenEtiqueta, nombre, precio, varietal, bodega, reseñas):
         self.__añada = añada
         self.__fechaActualizacion = fechaActualizacion
         self.__imagenEtiqueta = imagenEtiqueta
@@ -7,12 +7,13 @@ class Vino:
         self.__precio = precio
         self.__varietal = varietal
         self.__bodega = bodega
+        self.__resenias = reseñas
 
 
     def __str__(self):
         return (f"{self.__añada} -- {self.__fechaActualizacion} -\
 - {self.__imagenEtiqueta} -- {self.__nombre} -- {self.__precio} -\
-- {self.__bodega} -- {self.__varietal}")
+- {self.__bodega} -- {self.__varietal} -- {self.__resenias}")
 
     # Getters
 
@@ -40,6 +41,9 @@ class Vino:
     def getBodega(self):
         return self.__bodega
     
+    def getResenias(self):
+        return self.__resenias
+    
     # Setters
 
     def setAñada(self, añada):
@@ -66,11 +70,20 @@ class Vino:
     def setBodega(self, bodega):
         self.__bodega = bodega
 
+    def setResenias(self, resenias):
+        self.__resenias = resenias
+
+    def agregarResenia(self, resenia):
+        self.__resenias.append(resenia)
+
+    # Methods
+
     def tenesResenasDeTipoEnPeriodo(self, tipo, fechaInicio, fechaFin):
         pass
 
     def buscarInfoBodega(self):
-        pass
+        nombreBodega = self.__bodega.getNombre()
+        region, pais = self.__bodega.obtenerRegionYPais()
 
     def buscarVarietal(self):
         pass
@@ -81,14 +94,4 @@ class Vino:
     def calcularPuntajePromedio(self):
         pass
     
-
-    def getDatosVino(self): #TODO: AFUEERAAAA
-        return {
-            "añada": self.getAñada(),
-            "fechaActualizacion": self.getFechaActualizacion(),
-            "imagenEtiqueta": self.getImagenEtiqueta(),
-            "nombre": self.getNombre(),
-            "precio": self.getPrecio(),
-            "varietal": self.__varietal.getDatosVarietal()
-        }
 

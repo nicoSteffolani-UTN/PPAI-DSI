@@ -6,33 +6,38 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from backend.modelos.Pais import Pais
 
 
-db_path = os.path.join(os.path.dirname(__file__), 'datos_prueba.db')
-conexion = sqlite3.connect(db_path)
+class LectorPaises:
+    def __init__(self):
+        self.db_path = os.path.join(os.path.dirname(__file__), 'datos_prueba.db')
+        self.conexion = sqlite3.connect(self.db_path)
+        self.cursor = self.conexion.cursor()
 
-cursor = conexion.cursor()
+    def leerPaises(self, listaProvincias):
 
-cursor.execute(
-    'SELECT * FROM PAISES'
-)
+        self.cursor.execute(
+            'SELECT * FROM PAISES'
+        )
 
-paises = cursor.fetchall()
+        paises = self.cursor.fetchall()
 
-listaPaises = []
+        listaPaises = []
 
-for pais in paises:
-    idPais = pais[0]
-    nomProvincias = []
+        for pais in paises:
+            idPais = pais[0]
+            provinciasPais = []
 
-    cursor.execute(
-        'SELECT NOMBRE FROM PROVINCIAS WHERE PAIS = ?', (int(idPais),)
-    )
-    provincias = cursor.fetchall()
-    for provincia in provincias:
-        nomProvincias.append(provincia[0])
+            self.cursor.execute(
+                'SELECT NOMBRE FROM PROVINCIAS WHERE PAIS = ?', (int(idPais),)
+            )
+            provincias = self.cursor.fetchall()
+            for provincia in provincias:
+                for prov in listaProvincias:
+                    if provincia[0] == prov.getNombre():
+                        provinciasPais.append(prov)
 
-    pais = Pais(pais[1], nomProvincias)
-    listaPaises.append(pais)
+            pais = Pais(pais[1], provinciasPais)
+            listaPaises.append(pais)
+        self.conexion.close()
+        return listaPaises
 
-
-conexion.close()
 

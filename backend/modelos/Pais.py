@@ -14,10 +14,10 @@ class Pais:
     def setNombre(self, nombre):
         self.__nombre = nombre
 
-    def getprovincias(self):
+    def getProvincias(self):
         return self.__provincias
     
-    def setprovincias(self, provincias):
+    def setProvincias(self, provincias):
         self.__provincias = provincias
 
     def agregarPais(self, pais):

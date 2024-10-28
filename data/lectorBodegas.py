@@ -7,30 +7,37 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from backend.modelos.Bodega import Bodega
 
 
+class LectorBodegas:
+    def __init__(self):
+        self.db_path = os.path.join(os.path.dirname(__file__), 'datos_prueba.db')
+        self.conexion = sqlite3.connect(self.db_path)
+        self.cursor = self.conexion.cursor()
 
-db_path = os.path.join(os.path.dirname(__file__), 'datos_prueba.db')
-conexion = sqlite3.connect(db_path)
+    def leerBodegas(self, listaRegiones):
 
-cursor = conexion.cursor()
+        self.cursor.execute(
+            'SELECT * FROM BODEGAS'
+        )
 
-cursor.execute(
-    'SELECT * FROM BODEGAS'
-)
+        bodegas = self.cursor.fetchall()
+        
+        listaBodegas = []
 
-bodegas = cursor.fetchall()
+        for bodega in bodegas:
+            idRegion = bodega[5]
+            self.cursor.execute(
+                'SELECT * FROM REGIONES WHERE id_region_vitivinicola = ?', (int(idRegion),)
+            )
+            regiones = self.cursor.fetchone()
+            
+            for region in listaRegiones:
+                if regiones[1] == region.getNombre():
+                    regionVino = region
+                
 
-listaBodegas = []
+            bodega = Bodega(bodega[1], bodega[2], bodega[3], bodega[4], regionVino)
+            listaBodegas.append(bodega)
+        self.conexion.close()
+        return listaBodegas
 
-for bodega in bodegas:
-    idBodega = bodega[0]
-
-    cursor.execute(
-        'SELECT * FROM VINOS WHERE BODEGA = ?', (int(idBodega),)
-    )
-    vinos = cursor.fetchall()
-
-    bodega = Bodega(bodega[1],bodega[2],bodega[3],bodega[4], vinos)
-    listaBodegas.append(bodega)
-
-conexion.close()
 

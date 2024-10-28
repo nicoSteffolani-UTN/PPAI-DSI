@@ -5,30 +5,36 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..')) 
 from backend.modelos.Provincia import Provincia
 
+class LectorProvincias:
+    def __init__(self):
+        self.db_path = os.path.join(os.path.dirname(__file__), 'datos_prueba.db')
+        self.conexion = sqlite3.connect(self.db_path)
+        self.cursor = self.conexion.cursor()
 
-db_path = os.path.join(os.path.dirname(__file__), 'datos_prueba.db')
-conexion = sqlite3.connect(db_path)
+    def leerProvincias(self, listaRegiones):
 
-cursor = conexion.cursor()
+        self.cursor.execute(
+            'SELECT * FROM PROVINCIAS'
+        )
 
-cursor.execute(
-    'SELECT * FROM PROVINCIAS'
-)
+        provincias = self.cursor.fetchall()
 
-provincias = cursor.fetchall()
+        listaProvincias = []
 
-listaProvincias = []
+        for provincia in provincias:
+            idProvincia = provincia[0]
+            regionesProvincia = []
 
-for provincia in provincias:
-    idProvincia = provincia[0]
+            self.cursor.execute(
+                'SELECT * FROM REGIONES WHERE PROVINCIA = ?', (int(idProvincia),)
+            )
+            regiones = self.cursor.fetchall()
+            for region in regiones:
+                for reg in listaRegiones:
+                    if region[1] == reg.getNombre():
+                        regionesProvincia.append(reg)
 
-    cursor.execute(
-        'SELECT * FROM REGIONES WHERE PROVINCIA = ?', (int(idProvincia),)
-    )
-    regiones = cursor.fetchall()
-
-    provincia = Provincia(provincia[1], regiones)
-    listaProvincias.append(provincia)
-
-
-conexion.close()
+            provincia = Provincia(provincia[1], regionesProvincia)
+            listaProvincias.append(provincia)
+        self.conexion.close()
+        return listaProvincias

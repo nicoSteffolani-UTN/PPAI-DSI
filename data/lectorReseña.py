@@ -4,29 +4,26 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from backend.modelos.Reseña import Reseña
 
+class LectorReseñas:
+    def __init__(self):
+        self.db_path = os.path.join(os.path.dirname(__file__), 'datos_prueba.db')
+        self.conexion = sqlite3.connect(self.db_path)
+        self.cursor = self.conexion.cursor()
 
-db_path = os.path.join(os.path.dirname(__file__), 'datos_prueba.db')
-conexion = sqlite3.connect(db_path)
+    def leerReseñas(self):
+        self.cursor.execute(
+            'SELECT * FROM RESENIAS'
+        )
 
-cursor = conexion.cursor()
+        reseñas = self.cursor.fetchall()
+        listaReseñas = []
 
-cursor.execute(
-    'SELECT * FROM RESENIAS'
-)
+        for reseña in reseñas:
+            reseña = Reseña(reseña[1], reseña[2], reseña[3], reseña[4])
+            listaReseñas.append(reseña)
+        self.conexion.close()
+        return listaReseñas
 
-reseñas = cursor.fetchall()
-listaReseñas = []
-
-for reseña in reseñas:
-    idVino = reseña[5]
-    cursor.execute(
-        'SELECT * FROM VINOS WHERE id_vino = ?', (int(idVino),)
-    )
-    vino = cursor.fetchone()
-    reseña = Reseña(reseña[0], reseña[1], reseña[2], reseña[3], reseña[4], vino)
-    listaReseñas.append(reseña)
-conexion.close()
-
-
-def leerReseñas():
-    return listaReseñas
+if __name__ == '__main__':
+    lector = LectorReseñas()
+    lector.leerReseñas()

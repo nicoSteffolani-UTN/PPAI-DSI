@@ -1,13 +1,13 @@
 class Bodega:
-    def __init__(self, nombre, descripcion, historia, coordenadas, vino):
+    def __init__(self, nombre, descripcion, historia, coordenadas, region):
         self.__nombre = nombre
         self.__descripcion = descripcion
         self.__historia = historia
         self.__coordenadas = coordenadas
-        self.__vinos = vino
+        self.__region = region
 
     def __str__(self):
-        return f'{self.__nombre} -- {self.__descripcion} -- {self.__historia} -- {self.__coordenadas} -- {self.__vinos}'
+        return f'{self.__nombre} -- {self.__descripcion} -- {self.__historia} -- {self.__coordenadas} -- {self.__region}'
 
     def getNombre(self):
         return self.__nombre
@@ -33,21 +33,15 @@ class Bodega:
     def setCoordenadas(self, coordenadas):
         self.__coordenadas = coordenadas
 
-    def getVino(self):
-        return self.__vinos
+    def getRegion(self):
+        return self.__region
 
-    def setVino(self, vino):
-        self.__vinos = vino
+    def setregion(self, region):
+        self.__region = region
 
-    def obtenerRegionYPais(self):
-        pass
+    def obtenerRegionYPais(self): 
+        nombreRegion = self.__region.getNombre()
+        pais = self.__region.obtenerPais()
+
+        return nombreRegion, pais
     
-
-    def getDatosBodega(self): #TODO: AFUEEEERAAAAA
-        return {
-            "nombre": self.__nombre,
-            "descripcion": self.__descripcion,
-            "historia": self.__historia,
-            "coordenadas": self.__coordenadas,
-            "vino": self.__vinos
-        }
