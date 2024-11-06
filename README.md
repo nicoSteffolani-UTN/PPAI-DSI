@@ -7,3 +7,5 @@
 <p>python3 -m http.server 8000 --bind 127.0.0.1</p>
 <h2>Librerías utilizadas</h2>
 <p>Vamos a usar la librería Openpyxl para la generación de archivos de excel con la generación de los reportes.</p>
+
+<p>Hace falta instalar la libreria openpyxl</p>

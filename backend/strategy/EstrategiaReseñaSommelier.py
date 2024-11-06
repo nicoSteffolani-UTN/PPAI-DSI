@@ -1,9 +1,6 @@
 from strategy.IEstrategiaReseña import IEstrategiaReseña
 
 class EstrategiaReseñaSommelier(IEstrategiaReseña):
-
-    def __init__(self):
-        pass
     
     
     def buscarVinosReseñasEnPeriodo(self, fechaDesde, fechaHasta, listaVinos):
