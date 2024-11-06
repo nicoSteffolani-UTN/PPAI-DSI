@@ -1,3 +1,6 @@
+from data.lectorProvincia import LectorProvincias
+
+
 class RegionVitivinicola: 
     def __init__(self, nombre, descripcion):
         self.__descripcion = descripcion
@@ -19,8 +22,11 @@ class RegionVitivinicola:
         self.__nombre = nombre
 
     
-    def obtenerPais(self):
-        pass
+    def obtenerPais(self, listaProvincias, listaPaises):
+        for provincia in listaProvincias:
+            if self in provincia.getRegiones():
+                return provincia.obtenerPais(listaPaises)
+        return 'La region no pertenece a ningun pais'
 
     def getDatosRegionVitivinicola(self): #TODO: AFUEEEERAAAAA
         return {

@@ -39,9 +39,8 @@ class Bodega:
     def setregion(self, region):
         self.__region = region
 
-    def obtenerRegionYPais(self): 
+    def obtenerRegionYPais(self, listaProvincias, listaPaises): 
         nombreRegion = self.__region.getNombre()
-        pais = self.__region.obtenerPais()
-
+        pais = self.__region.obtenerPais(listaProvincias, listaPaises)
         return nombreRegion, pais
     
