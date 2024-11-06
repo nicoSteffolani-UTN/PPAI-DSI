@@ -78,14 +78,14 @@ class PantallaAdmReporteRanking {
         ranking.forEach((vino) => {
             const tr = `
                 <tr>
-                    <td>${vino[0]}</td>
-                    <td>${vino[1]}</td>
-                    <td>${vino[2]}</td>
-                    <td>$${vino[3]}</td>
-                    <td>${vino[4]}</td>
-                    <td>${vino[5]}</td>
-                    <td>${vino[6]}</td>
-                    <td>${vino[7]}</td>
+                    <td style="text-align: center;">${vino[0]}</td>
+                    <td style="text-align: center;">${vino[1]}</td>
+                    <td style="text-align: center;">${vino[2]}</td>
+                    <td style="text-align: center;">$${vino[3]}</td>
+                    <td style="text-align: center;">${vino[4]}</td>
+                    <td style="text-align: center;">${vino[5]}</td>
+                    <td style="text-align: center;">${vino[6]}</td>
+                    <td style="text-align: center;">${vino[7]}</td>
                 </tr>`;
             tabla.innerHTML += tr;
         });
