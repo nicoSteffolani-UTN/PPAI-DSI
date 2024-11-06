@@ -35,7 +35,7 @@ class GestorAdmReporteRanking():
         return tipoVisualizacion
 
     def buscarReseñasEnPeriodo(self, idVino): #TODO: Volar este metodo a la mierda
-        listaReseñas = leerReseñas()
+        listaReseñas = leerReseñas() # type: ignore
 
         for reseña in listaReseñas:
             if (reseña.validarFechaPeriodo(self.fechaDesde, self.fechaHasta) and reseña.sosDeVino(idVino)):
@@ -54,7 +54,7 @@ class GestorAdmReporteRanking():
 
 
     def buscarVinosReseñasEnPeriodo(self): #TODO: CORREGIRLO
-        listaVinos = leerVinos()
+        listaVinos = leerVinos() # type: ignore
         listaFiltrada = []
 
         for vino in listaVinos:
@@ -72,7 +72,7 @@ class GestorAdmReporteRanking():
 
     def calcularPuntajeDeSommelierEnPeriodo(self, lista): #TODO: CORREGIRLO
         listaRanking = []
-        listaReseñas = leerReseñas()
+        listaReseñas = leerReseñas() # type: ignore
 
         for vino in lista:
             puntaje = 0
@@ -154,8 +154,8 @@ class GestorAdmReporteRanking():
         listaVinos = lectorVinos.leerVinos(listaBodegas, listaVarietales, listaReseñas)
         '''for vino in listaVinos:
             print(f'Añada: {vino.getAñada()}, Fecha de Actualización: {vino.getFechaActualizacion()}, '
-                  f'Imagen de Etiqueta: {vino.getImagenEtiqueta()}, Nombre: {vino.getNombre()}, '
-                  f'Precio: {vino.getPrecio()}, Varietal: {vino.getVarietal()}, Bodega: {vino.getBodega()}')
+                f'Imagen de Etiqueta: {vino.getImagenEtiqueta()}, Nombre: {vino.getNombre()}, '
+                f'Precio: {vino.getPrecio()}, Varietal: {vino.getVarietal()}, Bodega: {vino.getBodega()}')
             print('Reseñas:')
             for resenia in vino.getResenias():
                 print(f'\t {resenia}')'''
