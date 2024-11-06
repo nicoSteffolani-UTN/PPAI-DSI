@@ -34,20 +34,13 @@ class Reseña:
 
     def setEsPremium(self, esPremium):
         self.__esPremium = esPremium
-
-    def getDatosReseña(self): #TODO: AFUEEEERAAAAA
-        return {
-            "comentario": self.getComentario(),
-            "puntaje": self.getPuntaje(),
-            "fechaReseña": self.getFechaReseña(),
-            "esPremium": self.getEsPremium(),
-        }
     
-    def sosDePeriodo(self, fechaDesde, fechaHasta): #TODO: revisar el metodo
+    def sosDePeriodo(self, fechaDesde, fechaHasta): 
         return self.__fechaReseña >= fechaDesde and self.__fechaReseña <= fechaHasta
     
     def sosDeSommelier(self):
-        pass
+        if self.__esPremium:
+            return True
 
 
     def sosDeVino(self, idVino):

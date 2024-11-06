@@ -7,13 +7,13 @@ class Vino:
         self.__precio = precio
         self.__varietal = varietal
         self.__bodega = bodega
-        self.__resenias = reseñas
+        self.__reseñas = reseñas
 
 
     def __str__(self):
         return (f"{self.__añada} -- {self.__fechaActualizacion} -\
 - {self.__imagenEtiqueta} -- {self.__nombre} -- {self.__precio} -\
-- {self.__bodega} -- {self.__varietal} -- {self.__resenias}")
+- {self.__bodega} -- {self.__varietal} -- {self.__reseñas}")
 
     # Getters
 
@@ -41,8 +41,8 @@ class Vino:
     def getBodega(self):
         return self.__bodega
     
-    def getResenias(self):
-        return self.__resenias
+    def getReseñas(self):
+        return self.__reseñas
     
     # Setters
 
@@ -61,17 +61,14 @@ class Vino:
     def setPrecio(self, precio):
         self.__precio = precio
 
-    def setBodega(self, resenias):
-        self.__resenias = resenias
-
     def setVarietal(self, varietal):
         self.__varietal = varietal
 
     def setBodega(self, bodega):
         self.__bodega = bodega
 
-    def setResenias(self, resenias):
-        self.__resenias = resenias
+    def setReseñas(self, reseñas):
+        self.__reseñas = reseñas
 
     def agregarResenia(self, resenia):
         self.__resenias.append(resenia)
@@ -79,19 +76,21 @@ class Vino:
     # Methods
 
     def tenesResenasDeTipoEnPeriodo(self, tipo, fechaInicio, fechaFin):
-        pass
+        for resenia in self.__resenias:
+            if resenia.getTipo() == tipo and resenia.getFecha() >= fechaInicio and resenia.getFecha() <= fechaFin:
+                return True
 
-    def buscarInfoBodega(self):
+    def buscarInfoBodega(self, listaProvincias, listaPaises):
         nombreBodega = self.__bodega.getNombre()
-        region, pais = self.__bodega.obtenerRegionYPais()
+        region, pais = self.__bodega.obtenerRegionYPais(listaProvincias, listaPaises)
+        return nombreBodega, region, pais
 
     def buscarVarietal(self):
-        pass
+        return self.__varietal.getDescripcion()
 
-    def calcularPuntajeSommelierEnPeriodo(self, fechaInicio, fechaFin):
-        pass
 
-    def calcularPuntajePromedio(self):
-        pass
+    def calcularPuntajePromedio(self, cant, sum):
+        prom = sum/cant
+        return round(prom, 2)
     
 

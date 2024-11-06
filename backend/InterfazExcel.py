@@ -1,26 +1,30 @@
-#TODO: completar la interfaz
 import openpyxl
 
-wb = openpyxl.load_workbook('Ranking.xlsx')
+class InterfazExcel:
+    @staticmethod
+    def exportarExcel(listaOrdenada):
+        wb = openpyxl.Workbook()
 
-hoja = wb.active
-hoja.titulo = 'Ranking'
+        hoja = wb.active
+        hoja.title = 'Ranking'
 
-hoja['A1'] = 'Nombre'
-hoja['A2'] = 'Clasificación de Sommelier'
-hoja['A3'] = 'Calificación General'
-hoja['A4'] = 'Precio Sugerido'
-hoja['A5'] = 'Bodega'
-hoja['A6'] = 'Varietal'
-hoja['A7'] = 'Región'
-hoja['A8'] = 'País'
+        hoja['A1'] = 'Nombre'
+        hoja['B1'] = 'Clasificación de Sommelier'
+        hoja['C1'] = 'Calificación General'
+        hoja['D1'] = 'Precio Sugerido'
+        hoja['E1'] = 'Bodega'
+        hoja['F1'] = 'Varietal'
+        hoja['G1'] = 'Región'
+        hoja['H1'] = 'País'
 
-for fila, datos in enumerate(listaFiltrada, start=2):
-    hoja[f'A{fila}'] = datos.nombre
-    hoja[f'B{fila}'] = datos.clasificacionSommelier
-    hoja[f'C{fila}'] = datos.calificacionGeneral
-    hoja[f'D{fila}'] = datos.precioSugerido
-    hoja[f'E{fila}'] = datos.bodega
-    hoja[f'F{fila}'] = datos.varietal
-    hoja[f'G{fila}'] = datos.region
-    hoja[f'H{fila}'] = datos.pais
+        for fila, datos in enumerate(listaOrdenada, start=2):
+            hoja[f'A{fila}'] = datos[0]
+            hoja[f'B{fila}'] = datos[1]
+            hoja[f'C{fila}'] = datos[2]
+            hoja[f'D{fila}'] = datos[3]
+            hoja[f'E{fila}'] = datos[4]
+            hoja[f'F{fila}'] = datos[5]
+            hoja[f'G{fila}'] = datos[6]
+            hoja[f'H{fila}'] = datos[7]
+
+        wb.save('Ranking.xlsx')

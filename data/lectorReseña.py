@@ -19,8 +19,8 @@ class LectorReseñas:
         listaReseñas = []
 
         for reseña in reseñas:
-            reseña = Reseña(reseña[1], reseña[2], reseña[3], reseña[4])
-            listaReseñas.append(reseña)
+            res = Reseña(reseña[1], reseña[2], reseña[3], reseña[4])
+            listaReseñas.append(res)
         self.conexion.close()
         return listaReseñas
 
