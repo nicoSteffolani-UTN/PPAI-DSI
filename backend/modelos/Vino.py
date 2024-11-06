@@ -89,7 +89,7 @@ class Vino:
         return self.__varietal.getDescripcion()
 
 
-    def calcularPuntajePromedio(cant, sum):
+    def calcularPuntajePromedio(self, cant, sum):
         prom = sum/cant
         return round(prom, 2)
     

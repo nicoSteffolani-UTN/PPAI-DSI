@@ -1,4 +1,4 @@
-import IEstrategiaReseña
+from strategy.IEstrategiaReseña import IEstrategiaReseña
 
 class EstrategiaReseñaSommelier(IEstrategiaReseña):
 
@@ -14,13 +14,17 @@ class EstrategiaReseñaSommelier(IEstrategiaReseña):
             
             vinoReseñas = vino.getReseñas()
             for reseña in vinoReseñas:
-                if reseña.getTipo() == 'sommelier' and reseña.getFecha() >= fechaDesde and reseña.getFecha() <= fechaHasta:
+
+                esSommelier = reseña.sosDeSommelier()
+                sosDePeriodo = reseña.sosDePeriodo(fechaDesde, fechaHasta)
+
+                if esSommelier and sosDePeriodo:
                     listaVinosFiltrados.append(vino)
         
-        self.calcularPuntajeEnPeriodo(fechaDesde, fechaHasta, listaVinosFiltrados)
+        return listaVinosFiltrados
         
 
-    def calcularPuntajeEnPeriodo(fechaDesde, fechaHasta, listaVinosFiltrados):
+    def calcularPuntajeEnPeriodo(self, fechaDesde, fechaHasta, listaVinosFiltrados):
 
         listaVinosFiltradosConPuntaje = []
         
@@ -34,11 +38,14 @@ class EstrategiaReseñaSommelier(IEstrategiaReseña):
             reseñas = vino.getReseñas()
 
             for reseña in reseñas:
+
+                esSommelier = reseña.sosDeSommelier()
+                sosDePeriodo = reseña.sosDePeriodo(fechaDesde, fechaHasta)
     
-                if reseña.getTipo() == 'sommelier' and reseña.getFecha() >= fechaDesde and reseña.getFecha() <= fechaHasta:
+                if esSommelier and sosDePeriodo:
                     totalPuntosTipo += reseña.getPuntaje()
                     cantReseniasTipo += 1
-                if reseña.getFecha() >= fechaDesde and reseña.getFecha() <= fechaHasta:
+                if sosDePeriodo:
                     totalPuntos += reseña.getPuntaje()
                     cantResenias += 1
 
@@ -50,7 +57,7 @@ class EstrategiaReseñaSommelier(IEstrategiaReseña):
         return listaVinosFiltradosConPuntaje
             
 
-    def calcularRanking(self, fechaDesde, fechaHasta, tipoRes, listaVinos):
-        var = self.buscarVinosReseñasEnPeriodo(fechaDesde, fechaHasta, tipoRes, listaVinos)
-        self.calcularPuntajeEnPeriodo(fechaDesde, fechaHasta, tipoRes, var)
+    def calcularRanking(self, fechaDesde, fechaHasta, listaVinos):
+        listaVinosFiltrados = self.buscarVinosReseñasEnPeriodo(fechaDesde, fechaHasta, listaVinos)
+        return self.calcularPuntajeEnPeriodo(fechaDesde, fechaHasta, listaVinosFiltrados)
 

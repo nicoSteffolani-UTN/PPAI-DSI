@@ -78,14 +78,14 @@ class PantallaAdmReporteRanking {
         ranking.forEach((vino) => {
             const tr = `
                 <tr>
-                    <td>${vino[0].nombre}</td>
+                    <td>${vino[0]}</td>
                     <td>${vino[1]}</td>
                     <td>${vino[2]}</td>
-                    <td>$${vino[0].precio}</td>
-                    <td>${vino[0].bodega.nombre}</td>
-                    <td>${vino[0].varietal.descripcion}</td>
-                    <td>${vino[0].bodega.region.nombre}</td>
-                    <td>${vino[0].bodega.region.provincia.pais.nombre}</td>
+                    <td>$${vino[3]}</td>
+                    <td>${vino[4]}</td>
+                    <td>${vino[5]}</td>
+                    <td>${vino[6]}</td>
+                    <td>${vino[7]}</td>
                 </tr>`;
             tabla.innerHTML += tr;
         });
@@ -101,6 +101,7 @@ class PantallaAdmReporteRanking {
                 const tipoVisualizacion = this.tomarTipoVisualizacion();
                 const url = `http://127.0.0.1:5000/?fechaDesde=${fechaDesde}&fechaHasta=${fechaHasta}&tipoReseña=${tipoReseña}&tipoVisualizacion=${tipoVisualizacion}`;
                 const data = await fetch(url);
+
                 const ranking = await data.json();
 
                 this.informarGeneracion(ranking);

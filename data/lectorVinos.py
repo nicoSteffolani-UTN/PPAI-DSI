@@ -54,7 +54,7 @@ class LectorVinos:
             for reseña in reseñas:
                 for res in listaReseñas:
                     if reseña[1] == res.getComentario() and reseña[2] == res.getPuntaje() and reseña[3] == res.getFechaReseña():
-                        reseñasVino.append(reseña)
+                        reseñasVino.append(res)
 
             vino = Vino(vino[1], vino[2], vino[3], vino[4], vino[5], varietalVino, bodegaVino, reseñasVino)
             listaVinos.append(vino)
