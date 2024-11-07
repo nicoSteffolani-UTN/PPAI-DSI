@@ -42,8 +42,3 @@ class Reseña:
         if self.__esPremium:
             return True
 
-
-    def sosDeVino(self, idVino):
-        if self.__vino.id == idVino:
-            return True
-    

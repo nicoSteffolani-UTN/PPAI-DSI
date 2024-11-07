@@ -75,11 +75,6 @@ class Vino:
 
     # Methods
 
-    def tenesResenasDeTipoEnPeriodo(self, tipo, fechaInicio, fechaFin):
-        for resenia in self.__resenias:
-            if resenia.getTipo() == tipo and resenia.getFecha() >= fechaInicio and resenia.getFecha() <= fechaFin:
-                return True
-
     def buscarInfoBodega(self, listaProvincias, listaPaises):
         nombreBodega = self.__bodega.getNombre()
         region, pais = self.__bodega.obtenerRegionYPais(listaProvincias, listaPaises)
@@ -88,9 +83,8 @@ class Vino:
     def buscarVarietal(self):
         return self.__varietal.getDescripcion()
 
-
-    def calcularPuntajePromedio(self, cant, sum):
-        prom = sum/cant
+    def calcularPuntajePromedio(self, cant, total):
+        prom = total/cant
         return round(prom, 2)
     
 

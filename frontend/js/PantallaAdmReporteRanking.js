@@ -7,7 +7,7 @@ class PantallaAdmReporteRanking {
         this.datePickerHasta = datePickerHasta;
         this.comboTipoReseña = comboTipoReseña;
         this.comboVisualizacion = comboVisualizacion;
-        this.listaRanking = listaRanking;
+        this.listaRanking = listaRanking;     
     }
 
     pedirFechasReseña() {
@@ -20,6 +20,9 @@ class PantallaAdmReporteRanking {
     pedirTipoResena() {
         const tipoReseña = document.getElementById('tipo-reseña');
         this.comboTipoReseña = tipoReseña;
+        tipoReseña.addEventListener('change', () => {
+            this.cambiarTexto();
+        });
     }
 
     pedirTipoVisualizacion() {
@@ -109,6 +112,18 @@ class PantallaAdmReporteRanking {
             }
         } catch (error) {
             console.log(error);
+        }
+    }
+
+    cambiarTexto() {
+        var menu = document.getElementById('tipo-reseña');
+        var textoCambiante = document.getElementById('tipo-calificacion');
+        if (menu.value === 'sommelier') {
+            textoCambiante.textContent = 'Calificación de Sommelier';
+        } else if (menu.value === 'amigos') {
+            textoCambiante.textContent = 'Calificación de Amigos';
+        } else {
+            textoCambiante.textContent = 'Calificación Normal';
         }
     }
 
